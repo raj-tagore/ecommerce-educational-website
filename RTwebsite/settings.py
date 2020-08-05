@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import django_heroku
 
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -137,8 +139,8 @@ PAYU_MERCHANT_KEY = "FEG7f40y"
 PAYU_MERCHANT_SALT = "lHX69YxP0p"
 PAYU_MODE = "TEST"
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
+STATIC_URL = '/static/' 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/'),]
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 MEDIA_URL= "https://rtwebsitebucket.s3.us-east-1.amazonaws.com/media/"
 
@@ -148,7 +150,11 @@ AWS_SECRET_ACCESS_KEY = 'DC8yVswNIjkDPPV4t6CpVFZZLKu215K07gEalvuk'
 AWS_STORAGE_BUCKET_NAME = 'rtwebsitebucket'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
+
+
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_S3_CUSTOM_DOMAIN='rtwebsitebucket.s3.amazonaws.com'
 
 django_heroku.settings(locals())
