@@ -137,10 +137,10 @@ PAYU_MERCHANT_KEY = "FEG7f40y"
 PAYU_MERCHANT_SALT = "lHX69YxP0p"
 PAYU_MODE = "TEST"
 
-STATIC_URL = '/static/'
+STATIC_URL = 'https://rtwebsitebucket.s3.us-east-1.amazonaws.com/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
-MEDIA_URL= "https://rtwebsitebucket.s3.us-east-1.amazonaws.com/"
+MEDIA_URL= "https://rtwebsitebucket.s3.us-east-1.amazonaws.com/media/"
 
 #S3 BUCKETS CONFIG
 AWS_ACCESS_KEY_ID = 'AKIA25WM5K3EFCGNTH4Q'
