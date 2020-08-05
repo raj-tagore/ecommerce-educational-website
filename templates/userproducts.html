@@ -1,0 +1,265 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+{%load static%}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Rajesh Tagore</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png'%}">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css'%}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css'%}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css'%}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/gijgo.css'%}">
+    <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+    <link rel="stylesheet" href="{% static 'css/slick.css'%}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header>
+        <div class="header-area ">
+            <div class="header-top_area d-none d-lg-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-md-6 ">
+                            <div class="social_media_links">
+                                <a href="https://www.linkedin.com/in/rajesh-tagore-b1398627/">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="https://www.facebook.com/rajesh.tagore.52">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="https://www.youtube.com/user/mkbl4870">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6">
+                            <div class="short_contact_list">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-envelope"></i>rajeshtagore@gmail.com</a></li>
+                                    <li><a href="#"><i class="fa fa-phone"></i> +91 9820157787</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sticky-header" class="main-header-area">
+                <div class="container">
+                    <div class="header_bottom_border white_border">
+                        <div class="row align-items-center">
+                            <div class="col-xl-3 col-lg-2">
+                                <div class="logo">
+                                    <a href="">
+                                        <img width="60" src="{% static 'images/LFLogo.png'%}" alt="Insert Logo Here" onclick="ReplaceUrl()">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-7">
+                                <div class="main-menu  d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a class="active" onclick="ReplaceUrl()">Back to Home Page</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--button onclick="myFunction()">Replace document</button-->
+
+    <script>
+    function ReplaceUrl() {
+      location.replace("http://127.0.0.1:8000/")
+    }
+    </script>
+    <!-- header-end -->
+
+    <script type="text/javascript">function CourseFormSubmit(){
+        document.CourseForm.submit();
+    }
+    </script>
+
+    <div class="bradcam_area breadcam_bg_4">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Your Products</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+                    <h1>Your Courses:<br><br> </h1>
+                        {% for i in Courses %}
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="{{Media}}{{i.FrontPic}}" alt="">
+                                <form action="coursesList/SpecificCourse/{{i.Name}}/", method="POST", name='CourseForm'>
+                                {% csrf_token %}
+                                <input type="hidden" name="UId" id="UId" value="{{User.id}}">
+                                <input type="hidden" name="CId" id="CId" value="{{i.id}}">
+                                <a onclick="CourseFormSubmit()" class="blog_item_date">
+                                <h3>View Course Contents</h3>
+                                </a>
+                            </div>
+
+                            <div class="blog_details">
+                                <a class="d-inline-block" onclick="submit()">
+                                    <h2>{{i.Name}}</h2>
+                                </a>
+                                <p><b>Price: Rs. {{i.Price}}</b></p>
+                                <p>{{i.About}}</p>
+                                <ul class="blog-info-link">
+                                    <li><a href="#"><i class="fa fa-user"></i>{{i.Tags}}</a></li>
+                                </ul>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--div class="portfolio_details_area">
+        {% for i in User.courses %}
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="portfolio_details_thumb">
+                        <img src="{{Media}}{{i.FrontPic}}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2">
+                    <div class="portfolio_details_content mt-50 mb-50 text-center">
+                        <h4>{{i.Name}}:</h4>
+                            <p>{{i.About}}</p>
+                            <p><i>{{i.Tags}}</i></p>
+                            <h5 class="mb-30">Hosted at: {{i.Address}}</h5>
+                            <div class="button-group-area mt-40">
+                                <a href="/{{i.Name}}/" class="genric-btn primary e-large">Successfully Bought</a>
+                                <br><br><br><br>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div-->
+
+    <!-- project  -->
+    <div class="project_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="project_info text-center">
+                        <h3>Hire Rajesh Tagore:</h3>
+                        <p>Want to host a training session? Or do you want a personal meeting? Click to proceed...</p>
+                        <a href="training/host/" class="boxed-btn3-white">Hire Rajesh Tagore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ project  -->
+
+    <!-- footer start -->
+    <footer class="footer">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget">
+                            <div class="footer_logo">
+                                <a href="#">
+                                    <img width="80" src="{% static 'images/LFLogo.png'%}" alt="">
+                                </a>
+                            </div>
+                            <p>
+                                Leader Factory- Manufacturing Leaders
+                            </p>
+                            <div class="socail_links">
+                                <ul>
+                                    <li>
+                                        <a href="https://www.facebook.com/rajesh.tagore.52">
+                                            <i class="ti-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.youtube.com/user/mkbl4870">
+                                            <i class="fa fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/in/rajesh-tagore-b1398627/">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    </div-->
+                    <div class="col-xl-2 col-md-6 col-lg-2">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                    Contact us
+                            </h3>
+                            <ul>
+                                <li><a href="contact/">Contact Us</a></li>
+                                <li><a href="training/host">Hire Rajesh Tagore</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                Address
+                            </h3>
+                            <ul>
+                                    <li>302, Bonanza Arcade, S.V. Road, Amboli, Andheri (w), Mumbai -400058</li>
+                                    <li>+91 9820157787</li>
+                                    <li><a href="#">rajeshtagore@gmail.com</a></li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

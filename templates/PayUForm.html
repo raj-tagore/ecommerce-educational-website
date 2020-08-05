@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head >
+</head>
+<body>
+<h1>PayUMoney Payment Request Form </h1>
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<form action="https://secure.payu.in/_payment"  name="payuform" method=POST >
+<input type="hidden" name="key" value="{{PAYU_MERCHANT_KEY}}" />
+<input type="hidden" name="hash_string" value="{{hash_string}}" />
+<input type="hidden" name="hash" value="{{hashh}}" />
+<input type="hidden" name="txnid" value="{{TxnId}}"/>
+<table>
+<tr>
+<td><b>Mandatory Parameters</b></td>
+</tr>
+<tr>
+<td>Amount: </td>
+<td><input name="amount" value="{{price}}" /></td>
+<td>First Name: </td>
+<td><input name="firstname" id="firstname" value="{{Namo}}" /></td>
+</tr>
+<tr>
+<td>Email: </td>
+<td><input name="email" id="email" value="{{Person.Email}}" /></td>
+<td>Phone: </td>
+<td><input name="phone" value="{{Person.Phone}}" /></td>
+</tr>
+<tr>
+<td>Product Info: </td>
+<td colspan="3"><input name="productinfo" value="{{Product.id}}" /> </td>
+</tr>
+<tr>
+<td>Success URI: </td>
+<td colspan="3"><input name="surl"  size="64" value="http://127.0.0.1:8000/coursesList/PaymentSuccess/" /></td>
+</tr>
+<tr>
+<td>Failure URI: </td>
+<td colspan="3"><input name="furl"  size="64" value="http://127.0.0.1:8000/coursesList/PaymentFailure/" /></td>
+</tr>
+<tr>
+<td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa" /></td>
+</tr>
+<td>UDF1: </td>
+<td><input name="udf1" value="{{Person.id}}" /></td>
+</tr>
+<tr>
+<script type="text/javascript">document.payuform.submit()</script>
+</table>
+</form>
+
+<!--form action="https://secure.payu.in/_payment" name="payuform" method="POST" >
+{% csrf_token %}
+<input type="hidden" name="key" value="{{PAYU_MERCHANT_KEY}}" />
+<input type="hidden" name="hash_string" value="" />
+<input type="hidden" name="hash" value="" />
+<input type="hidden" name="txnid" value="" /-->
+
+<!-- mandatory -->
+<!--input type="hidden" name="amount" value="{{Product.price}}" />
+<input type="hidden" name="firstname" id="firstname" value="{{Namo}}" />
+<input type="hidden" name="email" id="email" value="{{Person.email}}"  />
+<input type="hidden" name="phone" value="{{Person.phone_no}}" />
+<textarea type="hidden" name="productinfo" >{{Product.name}}</textarea>
+<input type="hidden" name="surl"  size="64" value="http://127.0.0.1:8000/coursesList/PaymentSuccess/" />
+<input type="hidden" name="furl"  size="64" value="http://127.0.0.1:8000/coursesList/PaymentFailure/" />
+<input type="hidden" name="service_provider" value="payu_paisa" />
+<input type="hidden" name="udf1" value="{{Person.id}}" />
+<input type="hidden" name="udf2" value="{{Product.id}}" />
+<input type="submit">
+</form-->
+<!--script type="text/javascript">document.payuform.submit()</script-->
+<!-- optional -->  
+<!--
+ Last Name: 
+ <input name="lastname" id="lastname"  />
+ Cancel URI: 
+ <input name="curl" value="" />
+  
+  
+ Address1: 
+ <input name="address1" />
+ Address2: 
+ <input name="address2"  />
+  
+  
+ City: 
+ <input name="city"  />
+ State: 
+ <input name="state"  />
+  
+  
+ Country: 
+ <input name="country"  />
+ Zipcode: 
+ <input name="zipcode"  />
+  
+  
+ UDF1: 
+ <input name="udf1"  />
+ UDF2: 
+ <input name="udf2"  />
+  
+  
+ UDF3: 
+ <input name="udf3"   />
+ UDF4: 
+ <input name="udf4"  />
+  
+  
+ UDF5: 
+ <input name="udf5"  />
+ PG: 
+ <input name="pg"  />
+  
+<td colspan="4"><input type="submit" value="Submit"  />
+  
+</table> -->
+</body>
+</html>

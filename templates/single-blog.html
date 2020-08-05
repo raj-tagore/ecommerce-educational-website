@@ -1,0 +1,511 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+{%load static%}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Rajesh Tagore</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css'%}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css'%}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css'%}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/gijgo.css'%}">
+    <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+    <link rel="stylesheet" href="{% static 'css/slick.css'%}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+</head>
+
+<body>
+    
+    <header>
+        <div class="header-area ">
+            <div class="header-top_area d-none d-lg-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-md-6 ">
+                            <div class="social_media_links">
+                                <a href="https://www.linkedin.com/in/rajesh-tagore-b1398627/">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="https://www.facebook.com/rajesh.tagore.52">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="https://www.youtube.com/user/mkbl4870">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6">
+                            <div class="short_contact_list">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-envelope"></i>rajeshtagore@gmail.com</a></li>
+                                    <li><a href="#"><i class="fa fa-phone"></i> +91 9820157787</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sticky-header" class="main-header-area">
+                <div class="container">
+                    <div class="header_bottom_border white_border">
+                        <div class="row align-items-center">
+                            <div class="col-xl-3 col-lg-2">
+                                <div class="logo">
+                                    <a href="">
+                                        <img width="60" src="{% static 'images/LFLogo.png'%}" alt="Insert Logo Here" onclick="ReplaceUrl()">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-7">
+                                <div class="main-menu  d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a class="active" onclick="ReplaceUrl()">Back to Home Page</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--button onclick="myFunction()">Replace document</button-->
+
+    <script>
+    function ReplaceUrl() {
+      location.replace("http://127.0.0.1:8000/")
+    }
+    </script>
+
+  <!-- bradcam_area  -->
+  <div class="bradcam_area breadcam_bg_4">
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-12">
+                  <div class="bradcam_text text-center">
+                      <h3>{{namo}}</h3>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--/ bradcam_area  -->
+
+   <!--================Blog Area =================-->
+   
+   <section class="blog_area single-post-area section-padding">
+      <div class="container">
+      {% if NotVerified %}
+      <h1><b>You do not own this course.<br>
+       If you have bought this course, please login and check your 'bought items'</b></h1>
+      <h3>If you have bought this course and are unable to view it, please contact us at 9820157787,<br>
+       or leave a query at our <a href="contact/">Contact Us</a> page.<br>
+       <a href="contact/">Click here to visit the contact us page</a></h3>
+       {% else %}
+        <div class="blog-author">
+        <div class="media align-items-center">
+         <div class="media-body">
+            <a href="#">
+               <h4>About Course:</h4>
+            </a>
+            <p>{{videos.About}}</p>
+            <p><i>{{videos.Tags}}</i></p>
+         </div>
+        </div>
+        </div>
+        <br><br>
+         <div class="row">
+            <div class="col-lg-8 posts-list">
+               <div class="single-post">
+                  <h3 class="mb-30">Course Videos:</h3>
+                  <div class="row">
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">1:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile1}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">2:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile2}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">3:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile3}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">4:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile4}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">5:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile5}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">6:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile6}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">7:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile7}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">8:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile8}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">9:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile9}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">10:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile10}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">11:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile11}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">12:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile12}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">13:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile13}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">14:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile14}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">15:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile15}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">16:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile16}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">17:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile17}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">18:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile18}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">19:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile19}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">20:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile20}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">21:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile21}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">22:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile22}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">23:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile23}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">24:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile24}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">25:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile25}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">26:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile26}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">27:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile27}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">28:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile28}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">29:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile29}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="single-defination">
+                        <h4 class="mb-20">30:</h4>
+                        <video width="200" height="120" controls>
+                          <source src="{{media}}{{videos.videofile30}}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                        <br><br><br><br><br><br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        {% endif %}
+        </div>
+        </section>
+
+    <!-- footer start -->
+    <footer class="footer">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget">
+                            <div class="footer_logo">
+                                <a href="#">
+                                    <img width="80" src="{% static 'images/LFLogo.png'%}" alt="">
+                                </a>
+                            </div>
+                            <p>
+                                Leader Factory- Manufacturing Leaders
+                            </p>
+                            <div class="socail_links">
+                                <ul>
+                                    <li>
+                                        <a href="https://www.facebook.com/rajesh.tagore.52">
+                                            <i class="ti-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.youtube.com/user/mkbl4870">
+                                            <i class="fa fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/in/rajesh-tagore-b1398627/">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-2 col-md-6 col-lg-2">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                    Contact us
+                            </h3>
+                            <ul>
+                                <li><a href="contact/">Contact Us</a></li>
+                                <li><a href="training/host">Hire Rajesh Tagore</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">
+                                Address
+                            </h3>
+                            <ul>
+                                    <li>302, Bonanza Arcade, S.V. Road, Amboli, Andheri (w), Mumbai -400058</li>
+                                    <li>+91 9820157787</li>
+                                    <li><a href="#">rajeshtagore@gmail.com</a></li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
