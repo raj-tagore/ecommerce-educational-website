@@ -138,7 +138,7 @@ PAYU_MERCHANT_SALT = "lHX69YxP0p"
 PAYU_MODE = "TEST"
 
 STATIC_URL = 'https://rtwebsitebucket.s3.us-east-1.amazonaws.com/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'https://rtwebsitebucket.s3.us-east-1.amazonaws.com/static/')]
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 MEDIA_URL= "https://rtwebsitebucket.s3.us-east-1.amazonaws.com/media/"
 
