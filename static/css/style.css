@@ -1483,7 +1483,7 @@ h3 {
 .about_area .about_info ul li::before {
   position: absolute;
   left: 0;
-  background-image: url(../images/HomePg/banner.jpg);
+  background-image: url(../images/HomePg/Banner.JPG);
   width: 16px;
   height: 16px;
   content: '';
@@ -1501,7 +1501,7 @@ h3 {
 
 /* line 90, ../../Arafath/CL/CL October/213. Business/HTML/scss/_about.scss */
 .about_bg_1 {
-  background-image: url(../images/HomePg/banner.jpg);
+  background-image: url(../images/HomePg/Banner.JPG);
 }
 
 /* line 93, ../../Arafath/CL/CL October/213. Business/HTML/scss/_about.scss */
@@ -2911,7 +2911,7 @@ h3 {
 
 /* line 1, ../../Arafath/CL/CL October/213. Business/HTML/scss/_bradcam.scss */
 .bradcam_bg_1 {
-  background-image: url(../images/HomePg/banner.jpg);
+  background-image: url(../images/HomePg/Banner.JPG);
 }
 
 /* line 4, ../../Arafath/CL/CL October/213. Business/HTML/scss/_bradcam.scss */
@@ -2921,12 +2921,12 @@ h3 {
 
 /* line 7, ../../Arafath/CL/CL October/213. Business/HTML/scss/_bradcam.scss */
 .breadcam_bg_3 {
-  background-image: url(../images/HomePg/banner.jpg);
+  background-image: url(../images/HomePg/Banner.JPG);
 }
 
 /* line 10, ../../Arafath/CL/CL October/213. Business/HTML/scss/_bradcam.scss */
 .breadcam_bg_4 {
-  background-image: url(../images/HomePg/banner.jpg);
+  background-image: url(../images/HomePg/Banner.JPG);
 }
 
 /* line 13, ../../Arafath/CL/CL October/213. Business/HTML/scss/_bradcam.scss */
