@@ -197,7 +197,7 @@ def Pay3PayU(request):
 	}
 	return render(request, 'PayUForm.html', VarDict)
 
-@csrf_protect
+
 @csrf_exempt
 def PaymentSuccess(request):
 	status=request.POST["status"]
@@ -232,7 +232,7 @@ def PaymentSuccess(request):
 		vardict = {"txnid":txnid,"status":status,"amount":amount, "s":s, 'Product':Product, 'user':user,'Media' : MEDIA_URL}
 	return render(request, 'SuccessPg.html', vardict)
 
-@csrf_protect
+
 @csrf_exempt
 def PaymentFailure(request):
 	status=request.POST["status"]
