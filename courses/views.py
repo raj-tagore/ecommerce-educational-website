@@ -130,7 +130,6 @@ def SpecificCourseView(request, namo):
 	UserId = request.POST["UId"]
 	CourseId = int(request.POST["CId"])
 	videos = Course.objects.get(Name = namo)
-	User = User.objects.get(id = int(UserId))
 	OwnedCourses = User.Courses.all()
 	NotVerified = True
 	for i in OwnedCourses:
