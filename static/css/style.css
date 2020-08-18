@@ -3442,6 +3442,11 @@ h3 {
   background-image: url(../images/HomePg/products.jpg);
 }
 
+.service_bg_0 {
+  background-image: url(../images/ResourcesMenuPg/white.jpg);
+}
+
+
 /* line 8, ../../Arafath/CL/CL October/213. Business/HTML/scss/_service.scss */
 .service_area {
   padding-top: 150px;

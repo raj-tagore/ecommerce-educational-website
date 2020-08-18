@@ -27,4 +27,5 @@ urlpatterns = [
     re_path(r'training/', include('training.urls')),
     re_path(r'products/', include('products.urls')),
     re_path(r'trainingonline/', include('onlinetraining.urls')),
+    re_path(r'resources/', include('resources.urls')),
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

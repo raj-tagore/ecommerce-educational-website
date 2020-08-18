@@ -1,6 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-{% load static %}
+{%load static%}
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png'%}">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -22,10 +22,30 @@
     <link rel="stylesheet" href="{% static 'css/flaticon.css'%}">
     <link rel="stylesheet" href="{% static 'css/gijgo.css'%}">
     <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+    <link rel="stylesheet" href="{% static 'css/slick.css'%}">
     <link rel="stylesheet" href="{% static 'css/slicknav.css'%}">
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <!-- <link rel="stylesheet" href="{% static 'css/responsive.css'%}"> -->
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+      <!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"-->        <!-- Google web font "Open Sans" -->
+      <link rel="stylesheet" href="{% static 'css2/bootstrap.min.css'%}">                                            <!-- https://getbootstrap.com/ -->
+      <link rel="stylesheet" href="{% static 'css2/fontawesome-all.min.css'%}">                                      <!-- Font awesome -->
+      <link rel="stylesheet" href="{% static 'css2/tooplate-style.css'%}">                                           <!-- Templatemo style -->
+
+      <script>
+        var renderPage = true;
+
+        if (navigator.userAgent.indexOf('MSIE') !== -1
+          || navigator.appVersion.indexOf('Trident/') > 0) {
+          /* Microsoft Internet Explorer detected in. */
+          alert("Please view this in a modern browser such as Chrome or Microsoft Edge.");
+          renderPage = false;
+        }
+      </script>
+
+    </head>
 </head>
+
 
 <body>
     <!--[if lte IE 9]>
@@ -110,122 +130,58 @@
       location.replace("http://rajeshtagore.com/")
     }
     </script>
+
     <!-- header-end -->
 
     <!-- bradcam_area  -->
-    <div class="bradcam_area breadcam_bg_4">
+    <div class="bradcam_area breadcam_bg_2">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>Our Courses</h3>
+                        <h3>Resources</h3>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!--/ bradcam_area  -->
+<br><br><br><br><br>
+    <div class="row mb-5">
+      <div class="col-xl-12">
+        <div class="media-boxes">
 
-
-    <!--================Blog Area =================-->
-    <section class="blog_area section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mb-5 mb-lg-0">
-                    <div class="blog_left_sidebar">
-                        {% for i in CourseObjAll %}
-                        <article class="blog_item">
-                            <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="{{media}}{{i.FrontPic}}" alt="">
-                                <!--a href="SpecificCourse/{{i.name}}/" class="blog_item_date"-->
-                                <a href="pay1/{{i.id}}/" class="blog_item_date">
-                                    <h3>Buy</h3>
-                                </a>
-                            </div>
-
-                            <div class="blog_details">
-                                <a class="d-inline-block" href="pay1/{{i.id}}/">
-                                    <h2>{{i.Name}}</h2>
-                                </a>
-                                <p><b>Price: Rs. {{i.Price}}</b></p>
-                                <p>{{i.About}}</p>
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i>{{i.Tags}}</a></li>
-                                </ul>
-                            </div>
-                        </article>
-                        {% endfor %}
-                    </div>
+            <div class="tm-search-form-container">
+              <form action="SearchResources/" method="GET" class="form-inline tm-search-form">
+                <div class="form-group tm-search-box">
+                  <input type="text" name="keyword" class="form-control tm-search-input" placeholder="Type your keyword ...">
+                  <input type="submit" value="Search" class="form-control tm-search-submit">
                 </div>
-                <div class="col-lg-4">
-                    <div class="blog_right_sidebar">
-                        {% if NotSearched %}
-                        <aside class="single_sidebar_widget tag_cloud_widget">
-                            <h4 class="widget_title">Tag Clouds</h4>
-                            <ul class="list">
-                                {% for i in Tags %}
-                                <li>
-                                    <a href="SearchCourse/?tag={{i}}">{{i}}</a>
-                                </li>
-                                {% endfor %}
-                        </aside>
-                        <aside class="single_sidebar_widget search_widget">
-                            <form action="SearchCourseByName/" method="GET">
-                                <div class="form-group">
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder='Search for a single word'
-                                            onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = 'Search for a single word'" name="tag" id="tag">
-                                        <div class="input-group-append">
-                                            <button class="btn" type="submit"><i class="ti-search"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                    type="submit">Search by name</button>
-                            </form>
-                        </aside>
-                        <aside class="single_sidebar_widget search_widget">
-                            <form action="SearchCourse/" method="GET">
-                                <div class="form-group">
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder='Search for a single word'
-                                            onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = 'Search for a single word'" name="tag" id="tag">
-                                        <div class="input-group-append">
-                                            <button class="btn" type="submit"><i class="ti-search"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                    type="submit">Search by category</button>
-                            </form>
-                        </aside>
-
-                        <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Recently Uploaded:</h3>
-                            {% for i in RecentCourses %}
-                            <div class="media post_item">
-                                <img width="40" src="{{media}}{{i.FrontPic}}" alt="post">
-                                <div class="media-body">
-                                    <a href="pay1/{{i.id}}/">
-                                        <h3>{{i.Name}}</h3>
-                                    </a>
-                                    <p>{{i.Tags}}</p>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </aside>
-                        
-                        {% endif %}
-
-                    </div>
-                </div>
+              </form>
             </div>
-        </div>
-    </section>
-    <!--================Blog Area =================-->
+            <br><br><br><br>
+            {% for i in Resource %}
+          <div class="media">
+            <a href="ViewResource/{{i.id}}/"><img src="{{Media}}{{i.FrontPic}}" alt="Image" class="mr-3" height="150"></a>
+            <div class="media-body tm-bg-gray">
+              <div class="tm-description-box">
+                <a href="ViewResource/{{i.id}}/"><h5 class="tm-text-blue">{{i.Name}}</h5></a>
+                <p class="mb-0">{{i.Brief}}<br><i>{{i.Tags}}</i></p>
+              </div>
+              <div class="tm-buy-box">
+                <a href="ViewResource/{{i.id}}/" class="tm-bg-blue tm-text-white tm-buy">View More</a>
+                <span class="tm-text-blue tm-price-tag">View More</span>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
 
+        </div> <!-- media-boxes -->
+      </div>
+    </div>
+
+
+    <!-- footer start -->
     <!-- footer start -->
     <footer class="footer">
         <div class="footer_top">
@@ -269,7 +225,7 @@
                             </h3>
                             <ul>
                                 <li><a href="training/">Training Sessions</a></li>
-                                <li><a href="products/">Products</a></li>
+                                <li><a href="Resources/">Resources</a></li>
                                 <li><a href="coursesList/">Online Courses</a></li>
                                 <li><a href="#">Live Courses</a></li>
                                 <li><a href="about/">About Rajesh Tagore</a></li>
@@ -305,6 +261,6 @@
         </div>
     </footer>
     <!-- form itself end -->
-    <!-- JS here -->
 </body>
+
 </html>

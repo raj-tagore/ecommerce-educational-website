@@ -12,5 +12,5 @@ urlpatterns = [
     re_path(r'Pay1/$', views.Pay1),
     re_path(r'Pay2/$', views.Pay2),
     re_path(r'PPaymentSuccess/', views.PaymentSuccess),
-    re_path(r'PPaymentFailure/', views.PaymentFailure)
+    re_path(r'PPaymentFailure/', views.PaymentFailure),
     ]	

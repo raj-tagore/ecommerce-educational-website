@@ -1,6 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-{% load static %}
+{%load static%}
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png'%}">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -22,17 +22,12 @@
     <link rel="stylesheet" href="{% static 'css/flaticon.css'%}">
     <link rel="stylesheet" href="{% static 'css/gijgo.css'%}">
     <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+    <link rel="stylesheet" href="{% static 'css/slick.css'%}">
     <link rel="stylesheet" href="{% static 'css/slicknav.css'%}">
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <!-- <link rel="stylesheet" href="{% static 'css/responsive.css'%}"> -->
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
-    <!-- header-start -->
     <header>
         <div class="header-area ">
             <div class="header-top_area d-none d-lg-block">
@@ -54,7 +49,7 @@
                         <div class="col-xl-6 col-md-6">
                             <div class="short_contact_list">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-envelope"></i>rajeshtagore@gmail.com</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope"></i> rajeshtagore@gmail.com</a></li>
                                     <li><a href="#"><i class="fa fa-phone"></i> +91 9820157787</a></li>
                                 </ul>
                             </div>
@@ -64,12 +59,12 @@
             </div>
             <div id="sticky-header" class="main-header-area">
                 <div class="container">
-                    <div class="header_bottom_border white_border">
+                    <div class="header_bottom_border">
                         <div class="row align-items-center">
                             <div class="col-xl-3 col-lg-2">
                                 <div class="logo">
-                                    <a href="">
-                                        <img width="60" src="{% static 'images/LFLogo.png'%}" alt="Insert Logo Here" onclick="ReplaceUrl()">
+                                    <a href="#">
+                                        <img width="60" src="{% static 'images/LFLogo.png'%}" alt="Insert Logo Here">
                                     </a>
                                 </div>
                             </div>
@@ -97,134 +92,171 @@
                                     </nav>
                                 </div>
                             </div>
+                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                                <div class="Appointment">
+                                    <div class="book_btn d-none d-lg-block">
+                                    {% if Verified %}
+                                    <form action="purchased/", method="POST", name='UserDetailsForm'>
+                                    {% csrf_token %}
+                                    <input type="hidden" name="UId" id="UId" value="{{User.id}}">
+                                    <a class="popup-with-form" onclick="UserDetailsSubmit()">Go to Purchased Items</a>
+                                    </form>
+                                    {% else %}
+                                    <a class="popup-with-form" href="login/">Login to view Items</a>
+                                    {% endif %}   
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </header>
-    <!--button onclick="myFunction()">Replace document</button-->
 
-    <script>
-    function ReplaceUrl() {
-      location.replace("http://rajeshtagore.com/")
-    }
-    </script>
-    <!-- header-end -->
-
-    <!-- bradcam_area  -->
-    <div class="bradcam_area breadcam_bg_4">
+    <div class="bradcam_area breadcam_bg_2">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>Our Courses</h3>
+                        <h3>Resources</h3>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--/ bradcam_area  -->
-
-
-    <!--================Blog Area =================-->
-    <section class="blog_area section-padding">
+    <div class="service_area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mb-5 mb-lg-0">
-                    <div class="blog_left_sidebar">
-                        {% for i in CourseObjAll %}
-                        <article class="blog_item">
-                            <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="{{media}}{{i.FrontPic}}" alt="">
-                                <!--a href="SpecificCourse/{{i.name}}/" class="blog_item_date"-->
-                                <a href="pay1/{{i.id}}/" class="blog_item_date">
-                                    <h3>Buy</h3>
-                                </a>
-                            </div>
-
-                            <div class="blog_details">
-                                <a class="d-inline-block" href="pay1/{{i.id}}/">
-                                    <h2>{{i.Name}}</h2>
-                                </a>
-                                <p><b>Price: Rs. {{i.Price}}</b></p>
-                                <p>{{i.About}}</p>
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i>{{i.Tags}}</a></li>
-                                </ul>
-                            </div>
-                        </article>
-                        {% endfor %}
+                <div class="col-xl-12">
+                    <div class="section_title text-center mb-50">
+                        <h3>Explore</h3>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="blog_right_sidebar">
-                        {% if NotSearched %}
-                        <aside class="single_sidebar_widget tag_cloud_widget">
-                            <h4 class="widget_title">Tag Clouds</h4>
-                            <ul class="list">
-                                {% for i in Tags %}
-                                <li>
-                                    <a href="SearchCourse/?tag={{i}}">{{i}}</a>
-                                </li>
-                                {% endfor %}
-                        </aside>
-                        <aside class="single_sidebar_widget search_widget">
-                            <form action="SearchCourseByName/" method="GET">
-                                <div class="form-group">
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder='Search for a single word'
-                                            onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = 'Search for a single word'" name="tag" id="tag">
-                                        <div class="input-group-append">
-                                            <button class="btn" type="submit"><i class="ti-search"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                    type="submit">Search by name</button>
-                            </form>
-                        </aside>
-                        <aside class="single_sidebar_widget search_widget">
-                            <form action="SearchCourse/" method="GET">
-                                <div class="form-group">
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder='Search for a single word'
-                                            onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = 'Search for a single word'" name="tag" id="tag">
-                                        <div class="input-group-append">
-                                            <button class="btn" type="submit"><i class="ti-search"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                    type="submit">Search by category</button>
-                            </form>
-                        </aside>
-
-                        <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Recently Uploaded:</h3>
-                            {% for i in RecentCourses %}
-                            <div class="media post_item">
-                                <img width="40" src="{{media}}{{i.FrontPic}}" alt="post">
-                                <div class="media-body">
-                                    <a href="pay1/{{i.id}}/">
-                                        <h3>{{i.Name}}</h3>
-                                    </a>
-                                    <p>{{i.Tags}}</p>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_service service_bg_0">
+                        <div class="service_hover">
+                        <a href="training/">
+                            <img src="{% static 'images/ResourcesMenuPg/pdf.jpg'%}" alt="" width="400">
+                            <h3>PDFs</h3> 
+                            <div class="hover_content">
+                                <div class="hover_content_inner">
+                                    <h4>PDF Resources</h4>
+                                    <p>PDFs specifically created to help you. Download for free!</p>
                                 </div>
                             </div>
-                            {% endfor %}
-                        </aside>
-                        
-                        {% endif %}
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_service service_bg_0">
+                        <div class="service_hover">
+                        <a href="coursesList/">
+                            <img src="{% static 'images/ResourcesMenuPg/ppt.jpg'%}" alt="" width="400">
+                            <h3>PPTs</h3>
+                            <div class="hover_content">
+                                    <div class="hover_content_inner">
+                                        <h4>PowerPoint Presentations</h4>
+                                        <p>Rajesh Tagore's powerpoint presentations for download.</p>
+                                    </div>
+                                </div>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_service service_bg_0">
+                        <div class="service_hover">
+                        <a href="products/">
+                            <img src="{% static 'images\ResourcesMenuPg\jpg.jpg'%}" alt="" width="410">
+                            <h3>JPGs</h3>
+                            <div class="hover_content">
+                                    <div class="hover_content_inner">
+                                        <h4>JPGs</h4>
+                                        <p>Download useful JPG resources for free!</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_service service_bg_0">
+                        <div class="service_hover">
+                        <a href="training/">
+                            <img src="{% static 'images/ResourcesMenuPg/video.jpg'%}" alt="" width="400">
+                            <h3>Videos</h3> 
+                            <div class="hover_content">
+                                <div class="hover_content_inner">
+                                    <h4>Videos</h4>
+                                    <p>Free to download videos of tutorials, demonstrations and much more</p>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_service service_bg_0">
+                        <div class="service_hover">
+                        <a href="coursesList/">
+                            <img src="{% static 'images/ResourcesMenuPg/aud.jpg'%}" alt="" width="400">
+                            <h3>Audio</h3>
+                            <div class="hover_content">
+                                    <div class="hover_content_inner">
+                                        <h4>Audio Files</h4>
+                                        <p>Snippets of paradigm shifting sentences and Rajesh Tagore's long speeches, free to download</p>
+                                    </div>
+                            </div>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_service service_bg_0">
+                        <div class="service_hover">
+                        <a href="products/">
+                            <img src="{% static 'images\ResourcesMenuPg\other.jpg'%}" alt="" width="410">
+                            <h3>Other</h3>
+                            <div class="hover_content">
+                                    <div class="hover_content_inner">
+                                        <h4>Other Downloadable Resources</h4>
+                                        <p>Audio Files, Word files and much more!</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+
+    <div class="project_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="project_info text-center">
+                        <h3>Hire Rajesh Tagore:</h3>
+                        <p>Want to host a training session? Or do you want a personal meeting? Click to proceed...</p>
+                        <a href="training/host/" class="boxed-btn3-white">Hire Rajesh Tagore</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!--================Blog Area =================-->
+    </div>
+    <!--/ project  -->
 
     <!-- footer start -->
     <footer class="footer">
@@ -262,7 +294,7 @@
                             </div>
                         </div>
                     </div>
-                    <!--div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
+                    <div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
                         <div class="footer_widget">
                             <h3 class="footer_title">
                                     Browse
@@ -276,7 +308,7 @@
                             </ul>
 
                         </div>
-                    </div-->
+                    </div>
                     <div class="col-xl-2 col-md-6 col-lg-2">
                         <div class="footer_widget">
                             <h3 class="footer_title">
@@ -304,7 +336,18 @@
             </div>
         </div>
     </footer>
-    <!-- form itself end -->
-    <!-- JS here -->
+    <!--/ footer end  -->
+    <script>
+    function ReplaceUrl() {
+      location.replace("http://rajeshtagore.com/")
+    }
+    </script>
+    <script type="text/javascript">function UserDetailsSubmit(){
+        document.UserDetailsForm.submit();
+    }
+    </script>
+    <script src="{% static 'js/URLRerouting.js'%}"></script>
+
 </body>
+
 </html>
