@@ -996,7 +996,7 @@ h3 {
 .header-area .main-header-area .main-menu ul li {
   display: inline-block;
   position: relative;
-  margin: 0 10px;
+  margin: 0 3px;
 }
 
 /* line 141, ../../Arafath/CL/CL October/213. Business/HTML/scss/_header.scss */
@@ -1275,7 +1275,7 @@ h3 {
 
 /* line 8, ../../Arafath/CL/CL October/213. Business/HTML/scss/_slider.scss */
 .slider_area .single_slider {
-  height: 900px;
+  height: 500px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -3449,8 +3449,8 @@ h3 {
 
 /* line 8, ../../Arafath/CL/CL October/213. Business/HTML/scss/_service.scss */
 .service_area {
-  padding-top: 150px;
-  padding-bottom: 120px;
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
 
 @media (max-width: 767px) {
@@ -6920,4 +6920,12 @@ h6 {
   font-size: 12px;
 }
 
+.container .row .topmargin {
+  margin-top: 100px;
+}
+
+.testmonial_area .container .topmargin {
+  margin-top: 120px;
+
+}
 /*# sourceMappingURL=style.css.map */

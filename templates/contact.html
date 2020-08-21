@@ -55,7 +55,7 @@
                         <div class="col-xl-6 col-md-6">
                             <div class="short_contact_list">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-envelope"></i>rajeshtagore@gmail.com</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope"></i> rajeshtagore@gmail.com</a></li>
                                     <li><a href="#"><i class="fa fa-phone"></i> +91 9820157787</a></li>
                                 </ul>
                             </div>
@@ -65,16 +65,9 @@
             </div>
             <div id="sticky-header" class="main-header-area">
                 <div class="container">
-                    <div class="header_bottom_border white_border">
-                        <div class="row align-items-center">
-                            <div class="col-xl-3 col-lg-2">
-                                <div class="logo">
-                                    <a href="">
-                                        <img width="60" src="{% static 'images/LFLogo.png'%}" alt="Insert Logo Here" onclick="ReplaceUrl()">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-7">
+                    <div class="header_bottom_border">
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-7">
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
@@ -98,8 +91,26 @@
                                     </nav>
                                 </div>
                             </div>
+                            <div class="col-xl-2 col-lg-2 d-none d-lg-block">
+                                <div class="Appointment">
+                                    <div class="book_btn d-none d-lg-block">
+                                    <a class="boxed-btn3-white" href="login/">Login</a> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-2 d-none d-lg-block">
+                                <div class="Appointment">
+                                    <div class="book_btn d-none d-lg-block">
+                                    <a href="register" class="boxed-btn3-white">Register</a> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -318,6 +329,29 @@
     </form>
     <!-- form itself end -->
     <script src="{% static 'js/URLRerouting.js'%}"></script>
+
+    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/ajax-form.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/scrollIt.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/gijgo.min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/slideshow.js' %}"></script>
 
 </body>
     

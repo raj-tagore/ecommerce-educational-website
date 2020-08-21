@@ -38,6 +38,16 @@
     location.replace("http://rajeshtagore.com/resources/")
     }
 
+  function Login() {
+    location.replace("http://rajeshtagore.com/login/")
+  }
+
+  function Register() {
+    location.replace("http://rajeshtagore.com/register/")
+  }
+
+
+
 
 
 
