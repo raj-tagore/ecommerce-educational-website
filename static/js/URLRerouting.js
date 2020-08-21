@@ -27,7 +27,7 @@
   }
 
   function Products() {
-    location.replace("http://rajeshtagore.com/product/")
+    location.replace("http://rajeshtagore.com/products/")
   }
 
   function OnlineTraining() {
