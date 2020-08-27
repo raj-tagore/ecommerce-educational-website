@@ -1982,8 +1982,8 @@ h3 {
 .portfolio_details_area .portfolio_details_thumb img {
   width: 100%;
   text-align: center;
-  padding-left: 25%;
-  padding-right: 25%;
+  padding-right: 5%;
+  padding-left: 5%;  
 
 }
 
@@ -6928,4 +6928,19 @@ h6 {
   margin-top: 120px;
 
 }
+
+a {
+  cursor: pointer;
+}
 /*# sourceMappingURL=style.css.map */
+
+@media (min-width: 767px) {
+  /* line 150, ../../Arafath/CL/CL October/213. Business/HTML/scss/_blog_part.scss */
+  .portfolio_details_area .portfolio_details_thumb img {
+    width: 100%;
+    text-align: center;
+    padding-right: 30%;
+    padding-left: 30%;  
+  
+  }
+}

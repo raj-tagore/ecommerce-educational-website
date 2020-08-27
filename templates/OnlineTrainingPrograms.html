@@ -74,17 +74,37 @@
                                             <li><a class="active" onclick="ReplaceUrl()">Home</a></li>
                                             <li><a onclick="Training()">Training <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a onclick="Training()">Apply for a scheduled offline training program</a></li>
+                                                    <li><a onclick="Training()">Upcoming</a></li>
+                                                    <li><a onclick="TrainingInsurance()">Insurance</a></li>
+                                                    <li><a onclick="TrainingSales()">Sales</a></li>
+                                                    <li><a onclick="TrainingNetworkMarketing()">Network Marketing</a></li>
+                                                    <li><a onclick="TrainingBusiness()">Business</a></li>
+                                                    <li><a onclick="TrainingSelfDevelopment()">Self Development</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a onclick="OnlineTraining()">Online Live Training <i class="ti-angle-down"></i></a>
+                                            <li><a onclick="OnlineTraining()">Online Training <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a onclick="OnlineTraining()">Apply for a live online training session</a></li>
+                                                    <li><a onclick="OnlineTraining()">Upcoming</a></li>
+                                                    <li><a onclick="OnlineTrainingInsurance()">Insurance</a></li>
+                                                    <li><a onclick="OnlineTrainingSales()">Sales</a></li>
+                                                    <li><a onclick="OnlineTrainingNetworkMarketing()">Network Marketing</a></li>
+                                                    <li><a onclick="OnlineTrainingBusiness()">Business</a></li>
+                                                    <li><a onclick="OnlineTrainingSelfDevelopment()">Self Development</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a onclick="Courses()">Courses</a> </li>
+                                            <li><a onclick="Courses()">Recorded Courses</a> </li>
                                             <li><a onclick="Products()">Products</a></li>
-                                            <li><a onclick="Resources()">Resources</a></li>
+                                            <li><a onclick="Resources()">Resources<i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a onclick="Resources()">All</a></li>
+                                                    <li><a onclick="PDFResources()">PDFs</a></li>
+                                                    <li><a onclick="PPTResources()">PPTs</a></li>
+                                                    <li><a onclick="JPGResources()">JPGs</a></li>
+                                                    <li><a onclick="VIDResources()">Videos</a></li>
+                                                    <li><a onclick="AUDResources()">Audio files</a></li>
+                                                    <li><a onclick="OtherResources()">Other files</a></li>
+                                                </ul>
+                                            </li>
                                             <li><a onclick="About()">About</a></li>
                                             <li><a onclick="Contact()">Contact Us</a></li>
                                         </ul>
@@ -140,34 +160,31 @@
     <div class="portfolio_details_area">
         {% for i in programs %}
         <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="portfolio_details_thumb">
-                        <img src="{{Media}}{{i.FrontPic}}" alt="">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="portfolio_details_thumb">
+                            <img src="{{Media}}{{i.FrontPic}}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-8 offset-xl-2">
+                        <div class="portfolio_details_content mt-50 mb-50 text-center">
+                                <h4>{{i.Name}}:</h4>
+                                <p>{{i.About}}</p>
+                                <p><b>Category: </b>{% for j in i.Category.all %}{{j.Name}}, {% endfor %}</p>
+                                <p><b>Specially For: </b>{% for k in i.ApplicantType.all %}{{k.Name}}, {% endfor %}</p>
+                                <h5 class="mb-30"><b>Hosted at:</b> {{i.Address}}</h5>
+                                <h4 class="mb-30"><b>Price:</b> Rs. {{i.Price}}</h4>
+                                <div class="button-group-area mt-40">
+                                    <a href="ApplyFor/{{i.Name}}/" class="genric-btn primary e-large">Apply To Above Course</a>
+                                    <a href="ReadMore/{{i.Name}}/" class="genric-btn primary e-large">Read More</a>
+                                    <br><br><br><br>
+                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-8 offset-xl-2">
-                    <div class="portfolio_details_content mt-50 mb-50 text-center">
-                        <h4>{{i.Name}}:</h4>
-                            <p>{{i.About}}</p>
-                            <p><i>{{i.Tags}}</i></p>
-                            <h5 class="mb-30">Hosted at: {{i.Address}}</h5>
-                            <h4 class="mb-30">Price: Rs. {{i.Price}}</h4>
-                            <div class="button-group-area mt-40">
-                                <a href="ApplyFor/{{i.Name}}/" class="genric-btn primary e-large">Apply To Above Course</a>
-                                <br><br><br><br>
-                            </div>
-                    </div>
-                </div>
-                <!--div class="col-xl-12">
-                    <div class="portfolio_details_thumb">
-                        <img src="img/gallery/details_img_2.png" alt="">
-                    </div>
-                </div-->
-            </div>
-        </div>
         {% endfor %}
     </div>
     

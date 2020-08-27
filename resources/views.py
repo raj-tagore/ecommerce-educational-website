@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import os
-
+from .models import JPGResource, PDFResource, PPTResource, OtherResource, AUDResource, VIDResource
 # Create your views here.
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

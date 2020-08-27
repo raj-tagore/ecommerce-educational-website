@@ -22,21 +22,96 @@ PAYU_MERCHANT_KEY = "FEG7f40y"
 PAYU_MERCHANT_SALT = SALT = "lHX69YxP0p"
 PAYU_MODE = "TEST"
 
-
+ 
 # Create your views here.
 def TrainingPg(request):
 	Programs = TrainingProgram.objects.all()
-	VarDict = {'programs' : Programs, 'Media' : MEDIA_URL}
+	SelectedCategory = 'Null'
+	'''for i in Programs:
+		print(i.Name)
+		print(i.Category)
+		print(i.Category.all())
+		for j in i.Category.all():
+			 print(j.Name)'''
+	VarDict = {'programs' : Programs, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
+	return render(request, "TrainingPrograms.html", VarDict)
+
+def InsuranceTrainingPg(request):
+	Programs = TrainingProgram.objects.all()
+	SelectedCategory = 'Insurance'
+	RelevantObj = []
+	for i in Programs:
+		ObjCategories = []
+		for j in i.Category.all():
+			ObjCategories.append(j.Name)
+		if SelectedCategory in ObjCategories:
+			RelevantObj.append(i)
+	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
+	return render(request, "TrainingPrograms.html", VarDict)
+
+def SalesTrainingPg(request):
+	Programs = TrainingProgram.objects.all()
+	SelectedCategory = 'Sales'
+	RelevantObj = []
+	for i in Programs:
+		ObjCategories = []
+		for j in i.Category.all():
+			ObjCategories.append(j.Name)
+		if SelectedCategory in ObjCategories:
+			RelevantObj.append(i)
+	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
+	return render(request, "TrainingPrograms.html", VarDict)
+
+def NetworkMarketingTrainingPg(request):
+	Programs = TrainingProgram.objects.all()
+	SelectedCategory = 'Network Marketing'
+	RelevantObj = []
+	for i in Programs:
+		ObjCategories = []
+		for j in i.Category.all():
+			ObjCategories.append(j.Name)
+		if SelectedCategory in ObjCategories:
+			RelevantObj.append(i)
+	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}	
+	return render(request, "TrainingPrograms.html", VarDict)
+
+def BusinessTrainingPg(request):
+	Programs = TrainingProgram.objects.all()
+	SelectedCategory = 'Business'
+	RelevantObj = []
+	for i in Programs:
+		ObjCategories = []
+		for j in i.Category.all():
+			ObjCategories.append(j.Name)
+		if SelectedCategory in ObjCategories:
+			RelevantObj.append(i)
+	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
+	return render(request, "TrainingPrograms.html", VarDict)
+
+def SelfDevelopmentTrainingPg(request):
+	Programs = TrainingProgram.objects.all()
+	SelectedCategory = 'Self Development'
+	RelevantObj = []
+	for i in Programs:
+		ObjCategories = []
+		for j in i.Category.all():
+			ObjCategories.append(j.Name)
+		if SelectedCategory in ObjCategories:
+			RelevantObj.append(i)
+	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
 	return render(request, "TrainingPrograms.html", VarDict)
 
 def HostTrainingPg(request):
 	return render(request, "HostTrainingPrograms.html")
 
-
 #display the form to apply for a training program
 def ApplyForTraining(request, CourseName):
 	Course = TrainingProgram.objects.get(Name = CourseName)
 	return render(request, "ApplyForTrainingForm.html", {'Course' : Course, 'Media' : MEDIA_URL})
+
+def MoreAboutTraining(request, CourseName):
+	Course = TrainingProgram.objects.get(Name = CourseName)
+	return render(request, "MoreAboutTraining.html", {'SelectedTraining' : Course, 'Media' : MEDIA_URL})
 
 '''def SaveDataOfApplicant(request):
 	Name = request.POST["name"]

@@ -40,5 +40,8 @@ class Course(models.Model):
 	videofile29 = models.FileField(upload_to='courses/videos/', null=True, default = 'null')
 	videofile30 = models.FileField(upload_to='courses/videos/', null=True, default = 'null')
 
+	def __str__(self):
+		return self.Name
+
 
 	

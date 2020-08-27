@@ -46,6 +46,73 @@
     location.replace("http://rajeshtagore.com/register/")
   }
 
+  function TrainingInsurance() {
+    location.replace("http://rajeshtagore.com/training/Insurance/")
+  }
+
+  function TrainingSales() {
+    location.replace("http://rajeshtagore.com/training/Sales/")
+  }
+
+  function TrainingNetworkMarketing() {
+    location.replace("http://rajeshtagore.com/training/NetworkMarketing/")
+  }
+
+  function TrainingBusiness() {
+    location.replace("http://rajeshtagore.com/training/Business/")
+  }
+
+  function TrainingSelfDevelopment() {
+    location.replace("http://rajeshtagore.com/training/SelfDevelopment/")
+  }
+
+  function OnlineTrainingInsurance() {
+    location.replace("http://rajeshtagore.com/trainingonline/Insurance/")
+  }
+
+  function OnlineTrainingSales() {
+    location.replace("http://rajeshtagore.com/trainingonline/Sales/")
+  }
+
+  function OnlineTrainingNetworkMarketing() {
+    location.replace("http://rajeshtagore.com/trainingonline/NetworkMarketing/")
+  }
+
+  function OnlineTrainingBusiness() {
+    location.replace("http://rajeshtagore.com/trainingonline/Business/")
+  }
+
+  function OnlineTrainingSelfDevelopment() {
+    location.replace("http://rajeshtagore.com/trainingonline/SelfDevelopment/")
+  }
+
+  function PDFResources() {
+    location.replace("http://rajeshtagore.com/resources/pdf/")
+  }
+
+  function PPTResources() {
+    location.replace("http://rajeshtagore.com/resources/ppy/")
+  }
+
+  function JPGResources() {
+    location.replace("http://rajeshtagore.com/resources/jpg/")
+  }
+
+  function VIDResources() {
+    location.replace("http://rajeshtagore.com/resources/vid/")
+  }
+
+  function AUDResources() {
+    location.replace("http://rajeshtagore.com/resources/aud/")
+  }
+
+  function OtherResources() {
+    location.replace("http://rajeshtagore.com/resources/other/")
+  }
+
+
+
+
 
 
 
