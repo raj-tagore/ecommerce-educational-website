@@ -173,7 +173,7 @@
                                 <p><h4><b>Category: </b></h4><br>{% for j in SelectedTraining.Category.all %}{{j.Name}}, {% endfor %}</p><br>
                                 <p><h4><b>Specially For: </b></h4><br>{% for k in SelectedTraining.ApplicantType.all %}{{k.Name}}, {% endfor %}</p><br>
                                 <p><h4><b>Language:</b></h4><br>{{SelectedTraining.Language}}</p><br>
-                                <p><h4><b>What You will learn:</b></h4><br>{{SelectedTraining.WhatYouWillLearn}}</p><br>
+                                <p><h4><b>What You will learn:</b></h4><br>{{SelectedTraining.WhatYouWillLearn|linebreaks}}</p><br>
                                 <p><h4><b>Daily Schedule:</b></h4><br>{{SelectedTraining.DailySchedule}}</p><br>
                                 <p><h4><b>Free Materials Provided:</b></h4><br>{{SelectedTraining.FreeMaterials}}</p><br>
                                 <p><h4><b>Special Attractions:</b></h4><br>{{SelectedTraining.SpecialAttractions}}</p><br>
