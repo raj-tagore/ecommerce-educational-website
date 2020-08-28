@@ -177,22 +177,22 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="portfolio_details_thumb">
-                            <img src="{{Media}}{{i.FrontPic}}" alt="">
+                            <img src="{{Media|safe}}{{i.FrontPic|safe}}" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xl-8 offset-xl-2">
                         <div class="portfolio_details_content mt-50 mb-50 text-center">
-                                <h4>{{i.Name}}:</h4>
-                                <p>{{i.About}}</p>
-                                <p><b>Category: </b>{% for j in i.Category.all %}{{j.Name}}, {% endfor %}</p>
-                                <p><b>Specially For: </b>{% for k in i.ApplicantType.all %}{{k.Name}}, {% endfor %}</p>
-                                <h5 class="mb-30"><b>Hosted at:</b> {{i.Address}}</h5>
-                                <h4 class="mb-30"><b>Price: </b> Rs.{{i.Price}}</h4>
+                                <h4>{{i.Name|safe}}:</h4>
+                                <p>{{i.About|safe}}</p>
+                                <p><b>Category: </b>{% for j in i.Category.all %}{{j.Name|safe}}, {% endfor %}</p>
+                                <p><b>Specially For: </b>{% for k in i.ApplicantType.all %}{{k.Name|safe}}, {% endfor %}</p>
+                                <h5 class="mb-30"><b>Hosted at:</b> {{i.Address|safe}}</h5>
+                                <h4 class="mb-30"><b>Price: </b> Rs.{{i.Price|safe}}</h4>
                                 <div class="button-group-area mt-40">
-                                    <a href="ApplyFor/{{i.Name}}/" class="genric-btn primary e-large">Apply To Above Course</a>
-                                    <a href="ReadMore/{{i.Name}}/" class="genric-btn primary e-large">Read More</a>
+                                    <a href="ApplyFor/{{i.Name|safe}}/" class="genric-btn primary e-large">Apply To Above Course</a>
+                                    <a href="ReadMore/{{i.Name|safe}}/" class="genric-btn primary e-large">Read More</a>
                                     <br><br><br><br>
                                 </div>
                         </div>
