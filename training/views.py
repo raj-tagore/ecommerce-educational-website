@@ -178,7 +178,7 @@ def Pay2(request):
 		else:
 			continue
 	if(exists):
-		return render(request, 'ApplyForTrainingForm.html', {'s': s, 'Course' : TrainingObj, 'Media' : MEDIA_URL})
+		return render(request, 'ApplyForTrainingForm.html', {'Prompt': s, 'Course' : TrainingObj, 'Media' : MEDIA_URL})
 	else:
 		VarDict = {'Product' : TrainingObj, 'Media' : MEDIA_URL, 
 					'Name': Name,
