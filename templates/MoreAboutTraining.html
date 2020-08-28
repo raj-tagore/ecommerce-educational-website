@@ -149,7 +149,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>{{SelectedTraining.Name}}</h3>
+                        <h3>{{SelectedTraining.Name|safe}}</h3>
                     </div>
                 </div>
             </div>
@@ -161,28 +161,28 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="portfolio_details_thumb">
-                            <img src="{{Media}}{{SelectedTraining.FrontPic}}" alt="">
+                            <img src="{{Media|safe}}{{SelectedTraining.FrontPic|safe}}" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xl-8 offset-xl-2">
                         <div class="portfolio_details_content mt-50 mb-50 text-center">
-                                <h3>{{SelectedTraining.Name}}:</h3>
-                                <p><h4><b>About:</b></h4><br>{{SelectedTraining.About}}</p><br>
-                                <p><h4><b>Category: </b></h4><br>{% for j in SelectedTraining.Category.all %}{{j.Name}}, {% endfor %}</p><br>
-                                <p><h4><b>Specially For: </b></h4><br>{% for k in SelectedTraining.ApplicantType.all %}{{k.Name}}, {% endfor %}</p><br>
-                                <p><h4><b>Language:</b></h4><br>{{SelectedTraining.Language}}</p><br>
-                                <p><h4><b>What You will learn:</b></h4><br>{{SelectedTraining.WhatYouWillLearn|linebreaks|safe}}</p><br>
-                                <p><h4><b>Daily Schedule:</b></h4><br>{{SelectedTraining.DailySchedule}}</p><br>
+                                <h3>{{SelectedTraining.Name|safe}}:</h3>
+                                <p><h4><b>About:</b></h4><br>{{SelectedTraining.About|safe}}</p><br>
+                                <p><h4><b>Category: </b></h4><br>{% for j in SelectedTraining.Category.all %}{{j.Name|safe}}, {% endfor %}</p><br>
+                                <p><h4><b>Specially For: </b></h4><br>{% for k in SelectedTraining.ApplicantType.all %}{{k.Name|safe}}, {% endfor %}</p><br>
+                                <p><h4><b>Language:</b></h4><br>{{SelectedTraining.Language|safe}}</p><br>
+                                <p><h4><b>What You will learn:</b></h4><br>{{SelectedTraining.WhatYouWillLearn|safe}}</p><br>
+                                <p><h4><b>Daily Schedule:</b></h4><br>{{SelectedTraining.DailySchedule|safe}}</p><br>
                                 <p><h4><b>Free Materials Provided:</b></h4><br>{{SelectedTraining.FreeMaterials|safe}}</p><br>
-                                <p><h4><b>Special Attractions:</b></h4><br>{{SelectedTraining.SpecialAttractions}}</p><br>
-                                <h5 class="mb-30"><h4><b>Dates:</b></h4><br>{{SelectedTraining.Dates}}</h5><br><br>
-                                <h5 class="mb-30"><h4><b>Hosted at:</b></h4><br>{{SelectedTraining.Address}}</h5><br><br>
-                                <h4 class="mb-30"><h4><b>Price:</b></h4><br> Rs. {{SelectedTraining.Price}}</h4><br><br><br>
+                                <p><h4><b>Special Attractions:</b></h4><br>{{SelectedTraining.SpecialAttractions|safe}}</p><br>
+                                <h5 class="mb-30"><h4><b>Dates:</b></h4><br>{{SelectedTraining.Dates|safe}}</h5><br><br>
+                                <h5 class="mb-30"><h4><b>Hosted at:</b></h4><br>{{SelectedTraining.Address|safe}}</h5><br><br>
+                                <h4 class="mb-30"><h4><b>Price:</b></h4><br> Rs. {{SelectedTraining.Price|safe}}</h4><br><br><br>
                                 <div class="button-group-area mt-40">
-                                    <a href="ApplyFor/{{SelectedTraining.Name}}/" class="genric-btn primary e-large">Apply To Above Course</a>
-                                    <a href="ReadMore/{{SelectedTraining.Name}}/" class="genric-btn primary e-large">Read More</a>
+                                    <a href="ApplyFor/{{SelectedTraining.Name|safe}}/" class="genric-btn primary e-large">Apply To Above Course</a>
+                                    <a href="ReadMore/{{SelectedTraining.Name|safe}}/" class="genric-btn primary e-large">Read More</a>
                                     <br><br><br><br>
                                 </div>
                         </div>
