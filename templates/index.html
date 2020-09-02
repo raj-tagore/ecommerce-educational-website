@@ -189,26 +189,26 @@
 
                     <!-- Full-width images with number and caption text -->
                     <div class="mySlides fade">
-                        <a href='#'>
+                        <a href='{{Featured1.UrlPointer}}'>
                         <div class="numbertext">1 / 3</div>
-                        <img src="{% static 'images/HomePg/training.jpg'%}" style="width:100%">
-                        <div class="text">Caption Text</div>
+                        <img src="{{Media}}{{Featured1.Picture}}" style="width:100%">
+                        <div class="text"></div>
                         </a>
                     </div>
 
                     <div class="mySlides fade">
-                        <a href='#'>
+                        <a href='{{Featured2.UrlPointer}}'>
                         <div class="numbertext">2 / 3</div>
-                        <img src="{% static 'images/HomePg/onlineCourse.jpg'%}" style="width:100%">
-                        <div class="text">Caption Two</div>
+                        <img src="{{Media}}{{Featured2.Picture}}" style="width:100%">
+                        <div class="text"></div>
                         </a>
                     </div>
 
                     <div class="mySlides fade">
-                        <a href='#'>
+                        <a href='{{Featured3.UrlPointer}}'>
                         <div class="numbertext">3 / 3</div>
-                        <img src="{% static 'images/HomePg/products.jpg'%}" style="width:100%">
-                        <div class="text">Caption Three</div>
+                        <img src="{{Media}}{{Featured3.Picture}}" style="width:100%">
+                        <div class="text"></div>
                         </a>
                     </div>
 
@@ -243,7 +243,7 @@
                     <div class="single_service service_bg_1">
                         <div class="service_hover">
                         <a href="training/">
-                            <img src="{% static 'images/HomePg/training.jpg'%}" alt="" width="400">
+                            <img src="{% static 'images/HomePg/training.JPG'%}" alt="" width="400">
                             <h3>Training</h3>
                             <div class="hover_content">
                                 <div class="hover_content_inner">
@@ -259,7 +259,7 @@
                     <div class="single_service service_bg_2">
                         <div class="service_hover">
                         <a href="coursesList/">
-                            <img src="{% static 'images/HomePg/onlineCourse.jpg'%}" alt="" width="400">
+                            <img src="{% static 'images/HomePg/onlineCourse.png'%}" alt="" width="400">
                             <h3>Online Course</h3>
                             <div class="hover_content">
                                     <div class="hover_content_inner">

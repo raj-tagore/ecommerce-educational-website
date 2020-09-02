@@ -11,4 +11,11 @@ class User(models.Model):
 	Premium = models.BooleanField(default = False)
 	Courses = models.ManyToManyField(Course) 
 
+class ThreeFeaturedPic(models.Model):
+	Picture = models.FileField(upload_to='', default='null')
+	URLPointer = models.TextField(default='null')
+
+#class ContactRequest(models.Model):
+
+
 

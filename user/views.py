@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from .models import User
 from django.shortcuts import HttpResponse
+from .models import ThreeFeaturedPic
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -10,7 +11,13 @@ MEDIA_URL= "https://rtwebsitebucket.s3.us-east-1.amazonaws.com/"
 
 # Create your views here.
 def HomeView(request):
-	return render(request, 'index.html')
+	ShowFeatured = True
+	FeaturedObj = ThreeFeaturedPic.objects.all()
+	Featured1 = FeaturedObj[0]
+	Featured2 = FeaturedObj[1]
+	Featured3 = FeaturedObj[2]
+	VarDict = {'Featured1': Featured1, 'Featured2': Featured2, 'Featured3': Featured3, 'ShowFeatured': ShowFeatured, 'Media': MEDIA_URL}
+	return render(request, 'index.html', VarDict)
 
 def LoginView(request):
 	Prompt = "Login to continue"

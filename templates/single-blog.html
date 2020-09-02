@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div id="sticky-header" class="main-header-area">
+            <div id="sticky-header" class="main-header-area details_nav_bg">
                 <div class="container">
                     <div class="header_bottom_border">
                         <div class="row">
@@ -136,7 +136,7 @@
     </script>
 
   <!-- bradcam_area  -->
-  <div class="bradcam_area breadcam_bg_4">
+  <!--div class="bradcam_area breadcam_bg_4">
       <div class="container">
           <div class="row">
               <div class="col-xl-12">
@@ -146,12 +146,33 @@
               </div>
           </div>
       </div>
-  </div>
+  </div-->
   <!--/ bradcam_area  -->
+
+  <div class="portfolio_details_area" style="padding-top: 200px; padding-bottom: 0px">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2"> 
+                    <div class="portfolio_details_content text-center mb-50">
+                        <span>Home- Login- Items</span>
+                        {% if NotVerified %}
+                        <h3>You do not own this course.</h3>
+                            <p>If you have bought this course and are unable to view it, please contact us at 9820157787,<br>
+                            or leave a query at our <a href="contact/">Contact Us</a> page.<br>
+                            <a href="contact/">Click here to visit the contact us page</a></p>
+                        {% else %}
+                        <h3>{{videos.Name}}:</h3>
+                            <p>{{videos.About}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
    <!--================Blog Area =================-->
    
-   <section class="blog_area single-post-area section-padding">
+   <!--section class="blog_area single-post-area section-padding">
       <div class="container">
       {% if NotVerified %}
       <h1><b>You do not own this course.<br>
@@ -171,323 +192,348 @@
          </div>
         </div>
         </div>
-        <br><br>
-         <div class="row">
-            <div class="col-lg-8 posts-list">
-               <div class="single-post">
-                  <h3 class="mb-30">Course Videos:</h3>
-                  <div class="row">
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">1:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile1}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">2:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile2}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">3:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile3}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">4:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile4}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">5:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile5}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">6:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile6}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">7:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile7}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">8:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile8}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">9:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile9}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">10:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile10}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">11:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile11}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">12:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile12}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">13:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile13}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">14:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile14}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">15:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile15}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">16:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile16}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">17:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile17}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">18:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile18}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">19:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile19}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">20:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile20}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">21:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile21}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">22:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile22}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">23:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile23}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">24:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile24}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">25:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile25}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">26:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile26}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">27:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile27}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">28:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile28}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">29:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile29}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="single-defination">
-                        <h4 class="mb-20">30:</h4>
-                        <video width="200" height="120" controls>
-                          <source src="{{media}}{{videos.videofile30}}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                        <br><br><br><br><br><br>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
         {% endif %}
         </div>
-        </section>
+        </section-->
+
+    <div class="whole-wrap">
+		<div class="container box_1170">
+			<div class="section-top-border">
+				<h3 class="mb-30">Course COntent</h3>
+
+        {% if videos.videofile1 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>1:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile1|safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile2 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>2:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile2|safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile3 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>3:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile3|safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile4 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>4:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile4|safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile5 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>5:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile5 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile6 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>6:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile6 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile7 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>7:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile7 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile8 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>8:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile8 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile9 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>9:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile9 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile10 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>10:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile10 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile11 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>11:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile11 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile12 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>12:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile12 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile13 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>13:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile13 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile14 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>14:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile14  |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile15 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>15:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile15 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile16 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>15:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile16 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile17 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>17:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile17 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile18 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>18:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile18 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile19 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>19:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile19 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile20!= 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>20:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile20 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile12 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>21:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile21 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile22 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>22:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile22 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile23 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>23:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile23 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile24 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>24:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile24 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile25 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>25:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile25 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile26 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>26:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile26 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile27 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>27:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile27 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile28 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>28:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile28 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile29 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>29:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile29 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+        {% if videos.videofile30 != 'null'%}
+				<div class="row">
+					<div class="col-md-3">
+						<p><h2>30:</h2></p>
+					</div>
+					<div class="col-md-9 mt-sm-20">
+						{{videos.videofile30 |safe}}
+					</div>
+				</div>
+        {% endif %}
+
+			</div>
+    </div>
+  </div>
 
     <!-- footer start -->
     <footer class="footer">
