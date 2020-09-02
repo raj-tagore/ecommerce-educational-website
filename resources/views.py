@@ -12,24 +12,24 @@ def ResourcesMenuPg(request):
 
 def JPGResourcesPg(request):
 	AllResourcesObj = JPGResource.objects.all()
-	return render(request, 'resources.html', {'Product' : AllResourcesObj, 'Media' : MEDIA_URL})
+	return render(request, 'resources.html', {'Resource' : AllResourcesObj, 'Media' : MEDIA_URL})
 
 def PDFResourcesPg(request):
 	AllResourcesObj = PDFResource.objects.all()
-	return render(request, 'resources.html', {'Product' : AllResourcesObj, 'Media' : MEDIA_URL})
+	return render(request, 'resources.html', {'Resource' : AllResourcesObj, 'Media' : MEDIA_URL})
   
 def PPTResourcesPg(request):
 	AllResourcesObj = PPTResource.objects.all()
-	return render(request, 'resources.html', {'Product' : AllResourcesObj, 'Media' : MEDIA_URL})
+	return render(request, 'resources.html', {'Resource' : AllResourcesObj, 'Media' : MEDIA_URL})
 
 def OtherResourcesPg(request):
 	AllResourcesObj = OtherResource.objects.all()
-	return render(request, 'resources.html', {'Product' : AllResourcesObj, 'Media' : MEDIA_URL})
+	return render(request, 'resources.html', {'Resource' : AllResourcesObj, 'Media' : MEDIA_URL})
 
 def AUDResourcesPg(request):
 	AllResourcesObj = AUDResource.objects.all()
-	return render(request, 'resources.html', {'Product' : AllResourcesObj, 'Media' : MEDIA_URL})
+	return render(request, 'resources.html', {'Resource' : AllResourcesObj, 'Media' : MEDIA_URL})
 
 def VIDResourcesPg(request):
 	AllResourcesObj = VIDResource.objects.all()
-	return render(request, 'resources.html', {'Product' : AllResourcesObj, 'Media' : MEDIA_URL})
+	return render(request, 'resources.html', {'Resource' : AllResourcesObj, 'Media' : MEDIA_URL})

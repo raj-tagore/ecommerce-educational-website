@@ -193,15 +193,15 @@
             <br><br><br><br>
             {% for i in Resource %}
           <div class="media">
-            <a href="ViewResource/{{i.id}}/"><img src="{{Media}}{{i.FrontPic}}" alt="Image" class="mr-3" height="150"></a>
+            <a href="{{Media}}{{i.File}}" download="{{i.Name}}"><img src="{{Media}}{{i.FrontPic}}" alt="Image" class="mr-3" height="150"></a>
             <div class="media-body tm-bg-gray">
               <div class="tm-description-box">
-                <a href="ViewResource/{{i.id}}/"><h5 class="tm-text-blue">{{i.Name}}</h5></a>
+                <a href="{{Media}}{{i.File}}"><h5 class="tm-text-blue">{{i.Name}}</h5></a>
                 <p class="mb-0">{{i.Brief}}<br><i>{{i.Tags}}</i></p>
               </div>
               <div class="tm-buy-box">
-                <a href="ViewResource/{{i.id}}/" class="tm-bg-blue tm-text-white tm-buy">View More</a>
-                <span class="tm-text-blue tm-price-tag">View More</span>
+                <a href="{{Media}}{{i.File}}" class="tm-bg-blue tm-text-white tm-buy" download="{{i.Name}}"> Download </a>
+                <!--span class="tm-text-blue tm-price-tag">View More</span-->
               </div>
             </div>
           </div>
