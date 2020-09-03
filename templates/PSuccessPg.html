@@ -63,17 +63,10 @@
                     </div>
                 </div>
             </div>
-            <div id="sticky-header" class="main-header-area">
+            <div id="sticky-header" class="main-header-area details_nav_bg">
                 <div class="container">
                     <div class="header_bottom_border white_border">
                         <div class="row align-items-center">
-                            <div class="col-xl-3 col-lg-2">
-                                <div class="logo">
-                                    <a href="">
-                                        <img width="60" src="{% static 'images/LFLogo.png'%}" alt="Insert Logo Here" onclick="ReplaceUrl()">
-                                    </a>
-                                </div>
-                            </div>
                             <div class="col-xl-6 col-lg-7">
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
@@ -133,12 +126,26 @@
     </script>
     <!-- header-end -->
 
-    <div class="bradcam_area breadcam_bg_4">
+    <!--div class="bradcam_area breadcam_bg_4">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
                         <h3>Thank You, {{user.Name}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div-->
+
+    <div class="portfolio_details_area" style="padding-top: 200px; padding-bottom: 0px">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2"> 
+                    <div class="portfolio_details_content text-center mb-50">
+                        <span>Home- Products- Buy Product</span>
+                        <h3>Thank You, {{user.Name}}</h3>
+                            <p>Your order will be delivered soon.</p>
                     </div>
                 </div>
             </div>
@@ -164,7 +171,7 @@
                             <h4 class="mb-30">Price: Rs. {{Product.Price}}</h4>
                             {% if s == True %}
                             <a onclick="ReplaceUrl()" class="genric-btn success">You have successfully bought this product
-                            <br>Your order will be delivered in 5 working days to address: {{user.Address}}<br>
+                            <br>Your order will be delivered in 25 working days to address: {{user.Address}}<br>
                             Click here to go back to the Home Page.
                             Visit the Contact-us Page if you have any problems with the order details</a>
                             {% else %}
