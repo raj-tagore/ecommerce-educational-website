@@ -9,6 +9,9 @@ class Product(models.Model):
 	FrontPic = models.ImageField(upload_to = 'Products/FrontPics/', default = 'null')
 	Tags = models.TextField(default = 'null')
 
+	def __str__(self):
+		return self.Name
+
 class Buyer(models.Model):
 	Name = models.CharField(max_length = 50)
 	Address = models.TextField(default = 'null')
@@ -16,3 +19,6 @@ class Buyer(models.Model):
 	Email = models.EmailField(default = 'null')
 	ProductId = models.IntegerField(default = 0)
 	ProductName = models.CharField(max_length = 100)
+
+	def __str__(self):
+		return self.Name
