@@ -10,6 +10,7 @@ class Product(models.Model):
 	Price = models.IntegerField(default = 0)
 	FrontPic = models.ImageField(upload_to = 'Products/FrontPics/', default = 'null')
 	Tags = models.TextField(default = 'null')
+	Display = models.BooleanField(default = True)
 
 	def __str__(self):
 		return self.Name

@@ -25,8 +25,12 @@ PAYU_MODE = "TEST"
 
 # Create your views here.
 def ProductsPg(request):
+	RelevantProducts = []
 	AllProductsObj = Product.objects.all()
-	return render(request, 'products.html', {'Product' : AllProductsObj, 'Media' : MEDIA_URL})
+	for i in AllProductsObj:
+		if i.Display == True:
+			RelevantProducts.append(i)
+	return render(request, 'products.html', {'Product' : RelevantProducts, 'Media' : MEDIA_URL})
 
 def ViewProduct(request, ProductId):
 	SelectedProduct = Product.objects.get(id = int(ProductId))
