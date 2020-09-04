@@ -5,6 +5,3 @@ from .models import TrainingProgram, TrainingApplicant,TrainingApplicantType, Tr
 # Register your models here.
 admin.site.register(TrainingProgram)
 admin.site.register(TrainingApplicant)
-admin.site.register(TrainingApplicantType)
-admin.site.register(TrainingCategory)
-
