@@ -5,6 +5,8 @@ class Product(models.Model):
 	Name = models.CharField(max_length = 50)
 	Brief = models.CharField(max_length = 200, default='Max 200 characters')
 	About = models.TextField(default = 'null')
+	BasePrice = models.IntegerField(default = 0)
+	DeliveryCharges = models.IntegerField(default = 0)
 	Price = models.IntegerField(default = 0)
 	FrontPic = models.ImageField(upload_to = 'Products/FrontPics/', default = 'null')
 	Tags = models.TextField(default = 'null')

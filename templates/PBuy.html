@@ -169,7 +169,9 @@
                                 <a class="d-inline-block" href="pay1/{{Product.id}}/">
                                     <h2>{{Product.Name}}</h2>
                                 </a>
-                                <p><b>Price: Rs. {{Product.Price}}</b></p>
+                                <p><b>Price: Rs. {{Product.BasePrice}}</b></p>
+                                <p><b>Packing and Delivery Charges: Rs. {{Product.DeliveryCharges}}</b></p>
+                                <p><b>Total: Rs. {{Product.Price}}</b></p>
                                 <p>{{Product.About}}</p>
                                 <ul class="blog-info-link">
                                     <li><a href="#"><i class="fa fa-user"></i>{{Product.Tags}}</a></li>
