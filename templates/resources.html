@@ -36,7 +36,8 @@
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
             z-index: 1; /* Sit on top */
-            padding-top: 100px; /* Location of the box */
+            padding-top: 100px;
+            padding-bottom: 300px; /* Location of the box */
             left: 0;
             top: 0;
             width: 100%; /* Full width */
@@ -261,7 +262,6 @@
 
           <div id="myModal{{i.id}}" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
                 <div class="portfolio_details_area" style="padding-top: 50px;">
                         <div class="container">
                             <div class="row">
@@ -278,7 +278,8 @@
                                             <p>{{i.About|safe}}</p>
                                             <div class="button-group-area mt-40">
                                                 <a href="{{Media}}{{i.File}}" class="genric-btn primary e-large" download="{{i.Name}}">Download For Free!</a>
-                                            </div>
+                                            </div><br><br><br>
+                                            <p><i>Click outside the box to close</i></p>
                                     </div>
                                 </div>
                             </div>
@@ -293,17 +294,9 @@
         // Get the button that opens the modal
         var btn = document.getElementById("myBtn{{i.id}}");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
         // When the user clicks the button, open the modal 
         btn.onclick = function() {
         modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-        modal.style.display = "none";
         }
 
         // When the user clicks anywhere outside of the modal, close it
