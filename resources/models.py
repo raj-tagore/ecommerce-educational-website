@@ -7,7 +7,9 @@ class PDFResource(models.Model):
 	About = models.TextField(default = 'null')
 	File = models.FileField(upload_to = 'Resources/ResourceFiles/', default = 'null')
 	FrontPic = models.ImageField(upload_to = 'Products/FrontPics/', default = 'null')
-	Tags = models.TextField(default = 'null')
+
+	def __str__(self):
+		return self.Name
 
 class JPGResource(models.Model):
 	Name = models.CharField(max_length = 150)
@@ -15,7 +17,9 @@ class JPGResource(models.Model):
 	About = models.TextField(default = 'null')
 	File = models.FileField(upload_to = 'Resources/ResourceFiles/', default = 'null')
 	FrontPic = models.ImageField(upload_to = 'Products/FrontPics/', default = 'null')
-	Tags = models.TextField(default = 'null')
+
+	def __str__(self):
+		return self.Name
 
 class PPTResource(models.Model):
 	Name = models.CharField(max_length = 150)
@@ -23,7 +27,9 @@ class PPTResource(models.Model):
 	About = models.TextField(default = 'null')
 	File = models.FileField(upload_to = 'Resources/ResourceFiles/', default = 'null')
 	FrontPic = models.ImageField(upload_to = 'Products/FrontPics/', default = 'null')
-	Tags = models.TextField(default = 'null')
+
+	def __str__(self):
+		return self.Name
 
 class AUDResource(models.Model):
 	Name = models.CharField(max_length = 150)
@@ -31,7 +37,9 @@ class AUDResource(models.Model):
 	About = models.TextField(default = 'null')
 	File = models.FileField(upload_to = 'Resources/ResourceFiles/', default = 'null')
 	FrontPic = models.ImageField(upload_to = 'Products/FrontPics/', default = 'null')
-	Tags = models.TextField(default = 'null')
+
+	def __str__(self):
+		return self.Name
 
 class VIDResource(models.Model):
 	Name = models.CharField(max_length = 150)
@@ -39,7 +47,9 @@ class VIDResource(models.Model):
 	About = models.TextField(default = 'null')
 	File = models.FileField(upload_to = 'Resources/ResourceFiles/', default = 'null')
 	FrontPic = models.ImageField(upload_to = 'Products/FrontPics/', default = 'null')
-	Tags = models.TextField(default = 'null')
+
+	def __str__(self):
+		return self.Name
 
 class OtherResource(models.Model):
 	Name = models.CharField(max_length = 150)
@@ -47,4 +57,6 @@ class OtherResource(models.Model):
 	About = models.TextField(default = 'null')
 	File = models.FileField(upload_to = 'Resources/ResourceFiles/', default = 'null')
 	FrontPic = models.ImageField(upload_to = 'Products/FrontPics/', default = 'null')
-	Tags = models.TextField(default = 'null')
+
+	def __str__(self):
+		return self.Name
