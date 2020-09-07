@@ -254,13 +254,13 @@
                 <p class="mb-0">{{i.Brief}}</p>
               </div>
               <div class="tm-buy-box">
-                <!--a href="{{Media}}{{i.File}}" class="tm-bg-blue tm-text-white tm-buy" download="{{i.Name}}"> Download </a-->
-                <button id="myBtn{{i.id}}"><div class="tm-bg-blue tm-text-white tm-buy">Read More/ Download</div></button>
+                <a href="{{Media}}{{i.File}}" class="tm-bg-blue tm-text-white tm-buy" download="{{i.Name}}"> Download </a>
+                <!--button id="myBtn{{i.id}}"><div class="tm-bg-blue tm-text-white tm-buy">Read More/ Download</div></button-->
               </div>
             </div>
           </div>
 
-          <div id="myModal{{i.id}}" class="modal">
+          <!--div id="myModal{{i.id}}" class="modal">
             <div class="modal-content">
                 <div class="portfolio_details_area" style="padding-top: 50px;">
                         <div class="container">
@@ -305,7 +305,7 @@
             modal.style.display = "none";
         }
         }
-        </script>
+        </script-->
             {% endfor %}
 
         </div> <!-- media-boxes -->
