@@ -91,7 +91,7 @@
   }
 
   function PPTResources() {
-    location.replace("http://rajeshtagore.com/resources/ppy/")
+    location.replace("http://rajeshtagore.com/resources/ppt/")
   }
 
   function JPGResources() {
