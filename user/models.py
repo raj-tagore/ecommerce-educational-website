@@ -10,6 +10,9 @@ class User(models.Model):
 	Phone = models.BigIntegerField(default = 9898989898)
 	Premium = models.BooleanField(default = False)
 	Courses = models.ManyToManyField(Course) 
+	
+	def __str__(self):
+		return self.Name
 
 class ThreeFeaturedPic(models.Model):
 	Picture = models.FileField(upload_to='', default='null')

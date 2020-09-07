@@ -110,6 +110,10 @@
     location.replace("http://rajeshtagore.com/resources/other/")
   }
 
+  function ViewPurchased() {
+    location.replace("http://rajeshtagore.com/purchased/")
+  }
+
 
 
 
