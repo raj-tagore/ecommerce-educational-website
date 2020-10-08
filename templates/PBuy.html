@@ -183,9 +183,14 @@
                                 <a class="d-inline-block" href="pay1/{{Product.id}}/">
                                     <h2>{{Product.Name}}</h2>
                                 </a>
-                                <p><b>Price: Rs. {{Product.BasePrice}}</b></p>
-                                <p><b>Packing and Delivery Charges: Rs. {{Product.DeliveryCharges}}</b></p>
-                                <p><b>Total: Rs. {{Product.Price}}</b></p>
+                                <p><b>Price: Rs. {{Product.BasePrice}}</b><br>
+                                <b>Packing and Delivery Charges: Rs. {{Product.DeliveryCharges}}</b><br>
+                                <b>Total: Rs. {{Product.Price}}</b>
+                                {% if Product.ActivateDiscount == True %}
+                                <br><b>Discounted Price: Rs. {{Product.DiscountedPrice}}</b></p>
+                                {% else %}
+                                </p>
+                                {% endif %}
                                 <p>{{Product.About}}</p>
                                 <ul class="blog-info-link">
                                     <li><a href="#"><i class="fa fa-user"></i>{{Product.Tags}}</a></li>
@@ -197,7 +202,11 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget post_category_widget">
+                            {% if Product.ActivateDiscount == True %}
+                            <h4 class="widget_title">Buy for <del>Rs. {{Product.Price}}</del>/  Rs. {{Product.DiscountedPrice}}<br>(includes packaging and delivery charges)</h4>
+                            {% else %}
                             <h4 class="widget_title">Buy for Rs. {{Product.Price}}<br>(includes packaging and delivery charges)</h4>
+                            {% endif %}
                             <ul class="list cat-list">
                                 <li>
                                 Pay online. We support Card, Wallet and UPI payments

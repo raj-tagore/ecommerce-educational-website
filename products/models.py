@@ -8,9 +8,13 @@ class Product(models.Model):
 	BasePrice = models.IntegerField(default = 0)
 	DeliveryCharges = models.IntegerField(default = 0)
 	Price = models.IntegerField(default = 0)
+	ActivateDiscount = models.BooleanField(default = False)
+	DiscountedPrice = models.IntegerField(default = 0)
 	FrontPic = models.ImageField(upload_to = 'Products/FrontPics/', default = 'null')
 	Tags = models.TextField(default = 'null')
 	Display = models.BooleanField(default = True)
+	Position = models.IntegerField(default=1)
+	DaysForDelivery = models.IntegerField(default=8)
 
 	def __str__(self):
 		return self.Name

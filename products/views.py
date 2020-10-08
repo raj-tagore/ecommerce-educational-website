@@ -14,14 +14,100 @@ import datetime
 import hashlib
 from random import randint
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
+import datetime
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
 MEDIA_URL= "https://rtwebsitebucket.s3.us-east-1.amazonaws.com/"
 
-PAYU_MERCHANT_KEY = "FEG7f40y"
+PAYU_MERCHANT_KEY = "FEG7f40y" 
 PAYU_MERCHANT_SALT = SALT = "lHX69YxP0p"
 PAYU_MODE = "TEST"
+
+def SendMail(Subject, TextContent, HtmlContent, Recipient):
+	Email= MIMEMultipart("alternative")
+	Email['Subject'] = Subject
+	Email['From'] = 'noreply.leader.factory@gmail.com'
+	Email['To'] = Recipient
+
+	ConvertedText = MIMEText(Text, 'plain')
+	ConvertedHTML = MIMEText(HTML, 'html')
+	Email.attach(ConvertedText)
+	Email.attach(ConvertedHTML)
+
+	s = smtplib.SMTP('smtp.gmail.com', 587)
+	s.connect("smtp.gmail.com",587)
+	s.ehlo()
+	s.starttls()
+	s.ehlo()
+	s.login('noreply.leader.factory@gmail.com', 'noreplyLF1234')
+	s.sendmail('noreply.leader.factory@gmail.com', Recipient, Email.as_string())
+	s.quit()
+
+def PrepMail(BuyerId, ProductId):
+	SelectedProduct = Product.objects.get(id = int(ProductId))
+	SelectedBuyer = Buyer.objects.get(id = int(BuyerId))
+
+	RecipientEmail = str(SelectedBuyer.Email)
+
+	Subject = "Your Purchase has been confirmed"
+
+	Text = """
+			Thank You, Mr.""" +str(SelectedBuyer.Name)+ """
+			Your order has been successfully placed
+			Details:
+			""" +str(SelectedProduct.Name)+ """
+			Price: Rs. """+str(SelectedProduct.Price)+ """
+			Your order will be delivered in """+str(SelectedProduct.DaysForDelivery)+ """
+			"""
+
+	HTML = """
+			<html>
+			<head>
+			<style>
+			h1 {text-align: center;}
+			h2 {text-align : center;}
+			h4 {text-align: left;}
+			body {text-align: center;}
+			.left {text-align: left;}
+			.row {background-color: lightyellow;}
+			.ProductPic {float: left;
+			            width: 30%;
+			            padding: 10px;}
+			.ProductInfo {float: right;
+			            width: 60%;
+			            padding: 10px;
+			            text-align: left;}
+			.row::after {content: '';
+			            clear: both;
+			            display: table;}
+			</style>
+			</head>
+			<body>
+			<h1>Thank You</h1>
+			<h3>Mr. """ +str(SelectedBuyer.Name)+ """</h3>
+			<h3>Your order has been successfully placed</h3>
+			<h4>Order Details:</h4>
+			<div class="row">
+			    <div class="ProductPic">
+			    <img src="C:/Users/Raj Tagore/Pictures/Screenshots/onlineCourse.png" alt="" width= 100%> 
+			    </div>
+			    <div class="ProductInfo">
+			    <p><h3 class="left">"""+str(SelectedProduct.Name)+ """</h3></p>
+			    <p>"""+str(SelectedProduct.About)+ """</p>
+			    <p>price: Rs. """+str(SelectedProduct.Price)+ """</p>
+			    </div>
+			</div>
+			<br><br>
+			Your order will be delivered in """+str(SelectedProduct.DaysForDelivery)+ """ days.
+			</body>
+			</html> """
+	
+	SendMail(Subject, Text, HTML, RecipientEmail)
 
 # Create your views here.
 def ProductsPg(request):
@@ -30,6 +116,7 @@ def ProductsPg(request):
 	for i in AllProductsObj:
 		if i.Display == True:
 			RelevantProducts.append(i)
+	RelevantProducts = sorted(RelevantProducts, key=lambda Product: Product.Position)
 	return render(request, 'products.html', {'Product' : RelevantProducts, 'Media' : MEDIA_URL})
 
 def ViewProduct(request, ProductId):
@@ -53,13 +140,13 @@ def Pay2(request):
 	txnid=hash_object.hexdigest()[0:20]
 	hashh = ''
 	Price = round(float(SelectedProduct.Price), 2)
+	if (SelectedProduct.ActivateDiscount==True):
+		Price = round(float(SelectedProduct.DiscountedPrice), 2)
 	hashSequence = "FEG7f40y|"+str(txnid)+"|"+str(Price)+"|"+str(PId)+"|"+Namo+"|"+Email+"||"+Name+'|'+str(Phone)+'|'+Email+"|"+Address+"|||||"
 	hash_string=hashSequence
 	hash_string+='|'
 	hash_string+=SALT
 	hashh=hashlib.sha512(hash_string.encode('utf-8')).hexdigest().lower()
-	print(hash_string)
-	print(Price)
 	VarDict = {
 		'Product' : SelectedProduct,
 		'Price' : Price,

@@ -170,10 +170,10 @@
                             <p>{{Product.About}}</p>
                             <h4 class="mb-30">Price: Rs. {{Product.Price}}</h4>
                             {% if s == True %}
-                            <a onclick="ReplaceUrl()" class="genric-btn success">You have successfully bought this product
-                            <br>Your order will be delivered in 25 working days to address: {{user.Address}}<br>
-                            Click here to go back to the Home Page.
-                            Visit the Contact-us Page if you have any problems with the order details</a>
+                            <a onclick="ReplaceUrl()" class="genric-btn success">You have successfully bought this product.<br>
+                            Click here to go back to the Home Page.</a>
+                            Your order will be delivered in {{Product.DaysForDelivery}} working days to address: {{user.Address}}
+                            Contact-us if you have any problems with the order details.
                             {% else %}
                             <a onclick="ReplaceUrl()" class="genric-btn danger">The transacton failed.
                             Click to go back to the home page.</a>
