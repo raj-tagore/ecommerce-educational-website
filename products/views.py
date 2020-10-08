@@ -103,7 +103,9 @@ def PrepMail(BuyerId, ProductId):
 			    </div>
 			</div>
 			<br><br>
+			<div class="row">
 			Your order will be delivered in """+str(SelectedProduct.DaysForDelivery)+ """ days.
+			</div>
 			</body>
 			</html> """
 	
