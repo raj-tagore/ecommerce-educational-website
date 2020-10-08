@@ -98,14 +98,11 @@ def PrepMail(BuyerId, ProductId):
 			    </div>
 			    <div class="ProductInfo">
 			    <p><h3 class="left">"""+str(SelectedProduct.Name)+ """</h3></p>
-			    <p>"""+str(SelectedProduct.About)+ """</p>
-			    <p>price: Rs. """+str(SelectedProduct.Price)+ """</p>
+			    <p>Your order will be delivered in """+str(SelectedProduct.DaysForDelivery)+ """ days.</p>
+			    <p>Price: Rs. """+str(SelectedProduct.Price)+ """</p>
 			    </div>
 			</div>
 			<br><br>
-			<div class="row">
-			Your order will be delivered in """+str(SelectedProduct.DaysForDelivery)+ """ days.
-			</div>
 			</body>
 			</html> """
 	
