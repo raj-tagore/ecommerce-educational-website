@@ -216,7 +216,11 @@
               </div>
               <div class="tm-buy-box">
                 <a href="ViewProduct/{{i.id}}/" class="tm-bg-blue tm-text-white tm-buy">Buy</a>
+                 {% if Product.ActivateDiscount == True %}
+                <span class="tm-text-blue tm-price-tag"><del>Rs. {{i.BasePrice}}</del>/ Rs.{{i.DiscountedPrice}}</span>
+                {% else %}
                 <span class="tm-text-blue tm-price-tag">Rs. {{i.BasePrice}}</span>
+                {% endif %}
               </div>
             </div>
           </div>
