@@ -34,8 +34,8 @@ def SendMail(Subject, TextContent, HtmlContent, Recipient):
 	Email['From'] = 'noreply.leader.factory@gmail.com'
 	Email['To'] = Recipient
 
-	ConvertedText = MIMEText(Text, 'plain')
-	ConvertedHTML = MIMEText(HTML, 'html')
+	ConvertedText = MIMEText(TextContent, 'plain')
+	ConvertedHTML = MIMEText(HtmlContent, 'html')
 	Email.attach(ConvertedText)
 	Email.attach(ConvertedHTML)
 
