@@ -168,13 +168,9 @@
                                 <div class="Appointment">
                                     <div class="book_btn d-none d-lg-block">
                                     {% if Verified %}
-                                    <form action="purchased/", method="POST", name='UserDetailsForm'>
-                                    {% csrf_token %}
-                                    <input type="hidden" name="UId" id="UId" value="{{User.id}}">
-                                    <a class="boxed-btn3-white" onclick="UserDetailsSubmit()">Items</a>
-                                    </form>
+                                    <a class="boxed-btn3-white" href="logout/">Logout</a>
                                     {% else %}
-                                    <a class="boxed-btn3-white" href="login/">Login</a>
+                                    <a class="boxed-btn3-white" href="register/">Register</a>
                                     {% endif %} 
                                     </div>
                                 </div>
