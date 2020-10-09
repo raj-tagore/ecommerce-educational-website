@@ -203,7 +203,7 @@
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget post_category_widget">
                             {% if Product.ActivateDiscount == True %}
-                            <h4 class="widget_title">Buy for <del>Rs. {{Product.Price}}</del>/  Rs. {{Product.DiscountedPrice}}<br>(includes packaging and delivery charges)</h4>
+                            <h4 class="widget_title"><del>Rs. {{Product.Price}}</del>/  Rs. {{Product.DiscountedPrice}}<br>(includes packaging and delivery charges)</h4>
                             {% else %}
                             <h4 class="widget_title">Buy for Rs. {{Product.Price}}<br>(includes packaging and delivery charges)</h4>
                             {% endif %}

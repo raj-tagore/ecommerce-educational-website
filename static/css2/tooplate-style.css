@@ -310,7 +310,8 @@ figure.effect-sadie:hover p {
     align-self: right;
     justify-content: space-between;
     width: 140px;
-}
+    padding-right: 10px;
+} 
 
 .tm-buy {
     font-weight: 400;

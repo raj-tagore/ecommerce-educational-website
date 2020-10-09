@@ -207,23 +207,24 @@
             </div>
             <br><br><br><br-->
             {% for i in Product %}
-          <div class="media">
+        <div class="media">
             <a href="ViewProduct/{{i.id}}/"><img src="{{Media}}{{i.FrontPic}}" alt="Image" class="mr-3" height="150"></a>
             <div class="media-body tm-bg-gray">
               <div class="tm-description-box">
                 <a href="ViewProduct/{{i.id}}/"><h5 class="tm-text-blue">{{i.Name}}</h5></a>
                 <p class="mb-0">{{i.Brief}}<br><a href="ViewProduct/{{i.id}}/"><i>Read More</i></a></p>
-              </div>
+              </div> 
               <div class="tm-buy-box">
                 <a href="ViewProduct/{{i.id}}/" class="tm-bg-blue tm-text-white tm-buy">Buy</a>
-                 {% if Product.ActivateDiscount == True %}
-                <span class="tm-text-blue tm-price-tag"><del>Rs. {{i.BasePrice}}</del>/ Rs.{{i.DiscountedPrice}}</span>
+                {% if i.ActivateDiscount == True %}
+                <span class="tm-text-blue tm-price-tag"><del>Rs. {{i.BasePrice}}</del></span>
+                <span class="tm-text-blue tm-price-tag">Rs. {{i.DiscountedPrice}}</span>
                 {% else %}
                 <span class="tm-text-blue tm-price-tag">Rs. {{i.BasePrice}}</span>
                 {% endif %}
               </div>
-            </div>
-          </div>
+            </div>   
+        </div>
             {% endfor %}
 
         </div> <!-- media-boxes -->
