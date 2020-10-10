@@ -200,11 +200,7 @@
                                 <p> Sales Trainer</p>
                                 <div class="video_service_btn">
                                     {% if Verified %}
-                                    <form action="purchased/", method="POST", name='UserDetailsForm'>
-                                    {% csrf_token %}
-                                    <input type="hidden" name="UId" id="UId" value="{{User.id}}">
                                     <a class="boxed-btn3-white" onclick="UserDetailsSubmit()">Items</a>
-                                    </form>
                                     <a onclick="ReplaceUrl()" class="boxed-btn3-white"> <i class="fa fa-play"></i>Logout</a>
                                     {% else %}
                                     <a href="login" class="boxed-btn3">Login</a>
@@ -569,6 +565,11 @@
     </script>
     <script type="text/javascript">function UserDetailsSubmit(){
         document.UserDetailsForm.submit();
+    }
+    </script>
+
+    <script type="text/javascript">function UserDetailsSubmit2(){
+        document.UserDetailsForm2.submit();
     }
     </script>
 
