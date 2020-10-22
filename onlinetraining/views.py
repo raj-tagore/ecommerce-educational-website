@@ -274,19 +274,4 @@ def OTPaymentSuccess(request):
 @csrf_protect
 @csrf_exempt
 def OTPaymentFailure(request):
-	status=request.POST["status"]
-	firstname=request.POST["firstname"]
-	amount=request.POST["amount"]
-	txnid=request.POST["txnid"]
-	posted_hash=request.POST["hash"]
-	key=request.POST["key"]
-	productinfo=request.POST["productinfo"]
-	email=request.POST["email"]
-	udf1=request.POST['udf1']
-	Name=request.POST['udf2']
-	Phone=request.POST['udf3']
-	salt=SALT
-	s=False
-	Product = OnlineTrainingProgram.objects.get(id = int(productinfo))
-	vardict = {"txnid":txnid,"status":status,"amount":amount,"s":s, 'Product':Product, 'user':NewApplicant,'Media' : MEDIA_URL}
-	return render(request, 'SuccessPg.html', vardict)
+	return HttpResponse("Your transaction failed, Return to the homepage and try again")
