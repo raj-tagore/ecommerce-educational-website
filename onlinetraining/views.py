@@ -287,5 +287,6 @@ def OTPaymentFailure(request):
 	Phone=request.POST['udf3']
 	salt=SALT
 	s=False
+	Product = OnlineTrainingProgram.objects.get(id = int(productinfo))
 	vardict = {"txnid":txnid,"status":status,"amount":amount,"s":s, 'Product':Product, 'user':NewApplicant,'Media' : MEDIA_URL}
 	return render(request, 'SuccessPg.html', vardict)
