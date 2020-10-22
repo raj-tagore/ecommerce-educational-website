@@ -6,7 +6,7 @@ import re as r
 urlpatterns = [
     path('', views.TrainingPg),
     re_path(r'onlinetraining/$', views.TrainingPg),
-    path(r'ApplyFor/<CourseName>/', views.ApplyForTraining),
+    path(r'ApplyFor/<CourseName>/$', views.ApplyForTraining),
     #re_path(r'AddParticipantForTraining/$', views.SaveDataOfApplicant),
     #re_path(r'AddClient/$', views.AddClient),
     re_path(r'pay2/$', views.Pay2),
