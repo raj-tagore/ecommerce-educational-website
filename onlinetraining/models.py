@@ -7,7 +7,7 @@ class OnlineTrainingCategory(models.Model):
 	About = models.TextField(default = 'null')
 
 	def __str__(self):
-		return self.Name
+		return self.Name 
 
 class OnlineTrainingApplicantType(models.Model):
 	Name = models.CharField(max_length = 100)
@@ -23,6 +23,7 @@ class OnlineTrainingProgram(models.Model):
 	FrontPic = models.ImageField(upload_to = 'OnlineTrainingPrograms/FrontPics/', default = 'null')
 	Tags = models.TextField(default = 'null')
 	Display = models.BooleanField(default = False)
+	Position = models.IntegerField(default=1)
 	Address = models.TextField(default = 'Leader Factory, Mumbai')
 	Dates = models.TextField(default = 'null')
 	Category = models.ManyToManyField(OnlineTrainingCategory)
