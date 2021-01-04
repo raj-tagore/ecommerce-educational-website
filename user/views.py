@@ -13,6 +13,7 @@ MEDIA_URL= "https://rtwebsitebucket.s3.us-east-1.amazonaws.com/"
 def HomeView(request):
 	ShowFeatured = True
 	FeaturedObj = ThreeFeaturedPic.objects.all()
+	FeaturedObj = sorted(FeaturedObj, key=lambda ThreeFeaturedPic: ThreeFeaturedPic.Position)
 	Featured1 = FeaturedObj[0]
 	Featured2 = FeaturedObj[1]
 	Featured3 = FeaturedObj[2]

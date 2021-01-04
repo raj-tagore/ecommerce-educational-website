@@ -17,6 +17,7 @@ class User(models.Model):
 class ThreeFeaturedPic(models.Model):
 	Picture = models.FileField(upload_to='', default='null')
 	URLPointer = models.TextField(default='null')
+	Position = models.IntegerField(default=1)
 
 #class ContactRequest(models.Model):
 

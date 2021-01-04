@@ -27,77 +27,101 @@ PAYU_MODE = "TEST"
 def TrainingPg(request):
 	Programs = TrainingProgram.objects.all()
 	SelectedCategory = 'Null'
-	'''for i in Programs:
-		print(i.Name)
-		print(i.Category)
-		print(i.Category.all())
-		for j in i.Category.all():
-			 print(j.Name)'''
-	VarDict = {'programs' : Programs, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
+	RelevantObj = []
+	for i in Programs:
+		if i.Display == True:
+			RelevantObj.append(i)
+	RelevantObj = sorted(RelevantObj, key=lambda TrainingProgram: TrainingProgram.Position)
+	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
 	return render(request, "TrainingPrograms.html", VarDict)
 
 def InsuranceTrainingPg(request):
 	Programs = TrainingProgram.objects.all()
+	DisplayedPrograms = []
+	for i in Programs:
+		if i.Display == True:
+			DisplayedPrograms.append(i)
 	SelectedCategory = 'Insurance'
 	RelevantObj = []
-	for i in Programs:
+	for i in DisplayedPrograms:
 		ObjCategories = []
 		for j in i.Category.all():
 			ObjCategories.append(j.Name)
 		if SelectedCategory in ObjCategories:
 			RelevantObj.append(i)
+	RelevantObj = sorted(RelevantObj, key=lambda TrainingProgram: TrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
 	return render(request, "TrainingPrograms.html", VarDict)
 
 def SalesTrainingPg(request):
 	Programs = TrainingProgram.objects.all()
+	DisplayedPrograms = []
+	for i in Programs:
+		if i.Display == True:
+			DisplayedPrograms.append(i)
 	SelectedCategory = 'Sales'
 	RelevantObj = []
-	for i in Programs:
+	for i in DisplayedPrograms:
 		ObjCategories = []
 		for j in i.Category.all():
 			ObjCategories.append(j.Name)
 		if SelectedCategory in ObjCategories:
 			RelevantObj.append(i)
+	RelevantObj = sorted(RelevantObj, key=lambda TrainingProgram: TrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
 	return render(request, "TrainingPrograms.html", VarDict)
 
 def NetworkMarketingTrainingPg(request):
 	Programs = TrainingProgram.objects.all()
+	DisplayedPrograms = []
+	for i in Programs:
+		if i.Display == True:
+			DisplayedPrograms.append(i)
 	SelectedCategory = 'Network Marketing'
 	RelevantObj = []
-	for i in Programs:
+	for i in DisplayedPrograms:
 		ObjCategories = []
 		for j in i.Category.all():
 			ObjCategories.append(j.Name)
 		if SelectedCategory in ObjCategories:
 			RelevantObj.append(i)
+	RelevantObj = sorted(RelevantObj, key=lambda TrainingProgram: TrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}	
 	return render(request, "TrainingPrograms.html", VarDict)
 
 def BusinessTrainingPg(request):
 	Programs = TrainingProgram.objects.all()
+	DisplayedPrograms = []
+	for i in Programs:
+		if i.Display == True:
+			DisplayedPrograms.append(i)
 	SelectedCategory = 'Business'
 	RelevantObj = []
-	for i in Programs:
+	for i in DisplayedPrograms:
 		ObjCategories = []
 		for j in i.Category.all():
 			ObjCategories.append(j.Name)
 		if SelectedCategory in ObjCategories:
 			RelevantObj.append(i)
+	RelevantObj = sorted(RelevantObj, key=lambda TrainingProgram: TrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
 	return render(request, "TrainingPrograms.html", VarDict)
 
 def SelfDevelopmentTrainingPg(request):
 	Programs = TrainingProgram.objects.all()
+	DisplayedPrograms = []
+	for i in Programs:
+		if i.Display == True:
+			DisplayedPrograms.append(i)
 	SelectedCategory = 'Self Development'
 	RelevantObj = []
-	for i in Programs:
+	for i in DisplayedPrograms:
 		ObjCategories = []
 		for j in i.Category.all():
 			ObjCategories.append(j.Name)
 		if SelectedCategory in ObjCategories:
 			RelevantObj.append(i)
+	RelevantObj = sorted(RelevantObj, key=lambda TrainingProgram: TrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
 	return render(request, "TrainingPrograms.html", VarDict)
 

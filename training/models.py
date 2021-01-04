@@ -29,6 +29,7 @@ class TrainingProgram(models.Model):
 	FrontPic = models.ImageField(upload_to = 'TrainingPrograms/FrontPics/', default = 'null')
 	Tags = models.TextField(default = 'null')
 	Display = models.BooleanField(default = False)
+	Position = models.IntegerField(default=1)
 	Address = models.TextField(default = 'Leader Factory, Mumbai')
 	Dates = models.CharField(default = 'null', max_length=100)
 	Category = models.ManyToManyField(TrainingCategory)
