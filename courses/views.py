@@ -138,8 +138,6 @@ def SpecificCourseView(request, namo):
 			NotVerified = False
 			videos = Course.objects.get(Name = namo)
 			return render(request, 'single-blog.html', {'namo' : namo, 'videos' : videos, 'media' : MEDIA_URL, 'NotVerified' : NotVerified})
-		else:
-			return render(request, 'single-blog.html', {'namo' : namo, 'NotVerified' : NotVerified})
 	return render(request, 'single-blog.html', {'namo' : "No Courses bought", 'NotVerified' : NotVerified})
 
 def Pay1(request, CourseId):

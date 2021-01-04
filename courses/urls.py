@@ -8,6 +8,7 @@ urlpatterns = [
     path('index/', views.HomeView),
     path('CourseList/', views.CourseListView),
 	path('SpecificCourse/<namo>/', views.SpecificCourseView),
+    path('login/purchased/coursesList/SpecificCourse/<namo>/', views.SpecificCourseView),
 	path('SearchCourse/SpecificCourse/<namo>/', views.SpecificCourseView),
 	path('SearchCourseByName/SpecificCourse/<namo>/', views.SpecificCourseView),
     re_path(r'SearchCourse/$', views.SearchCourse),
