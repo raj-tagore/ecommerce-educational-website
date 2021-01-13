@@ -130,7 +130,7 @@ def Pay1(request):
 def Pay2(request):
 	Name = request.POST["Name"]
 	Email = request.POST["Email"]
-	Phone = request.POST["Phone"]
+	Phone = request.POST["Phone"] 
 	PId = request.POST["PId"]
 	Address = request.POST["Address1"]+", "+request.POST["Address2"]+", "+request.POST["Address3"]+", "+request.POST["PinCode"]
 	SelectedProduct = Product.objects.get(id = PId)

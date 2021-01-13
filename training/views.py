@@ -118,7 +118,7 @@ def SelfDevelopmentTrainingPg(request):
 	for i in DisplayedPrograms:
 		ObjCategories = []
 		for j in i.Category.all():
-			ObjCategories.append(j.Name)
+			ObjCategories.append(j.Name) 
 		if SelectedCategory in ObjCategories:
 			RelevantObj.append(i)
 	RelevantObj = sorted(RelevantObj, key=lambda TrainingProgram: TrainingProgram.Position)
@@ -189,6 +189,7 @@ def Pay2(request):
 	Email = request.POST["Email"]
 	Phone = request.POST["Phone"]
 	CourseId = request.POST["CourseId"]
+	Address = request.POST["Address1"]+", "+request.POST["Address2"]+", "+request.POST["Address3"]+", "+request.POST["PinCode"]
 	Applicants = TrainingApplicant.objects.all()
 	TrainingObj = TrainingProgram.objects.get(id = CourseId)
 	exists = False
@@ -208,7 +209,8 @@ def Pay2(request):
 					'Name': Name,
 					'Email': Email,
 					'Phone': Phone,
-					'CourseId': TrainingObj.id}
+					'CourseId': TrainingObj.id,
+					'Address': Address}
 		return render(request, 'Tbuy.html', VarDict)
 
 def Pay3(request):
@@ -216,13 +218,14 @@ def Pay3(request):
 	Email = request.POST["Email"]
 	Phone = request.POST["Phone"]
 	CourseId = request.POST["CourseId"]
+	Address = request.POST["Address"]
 	Product = TrainingProgram.objects.get(id = int(CourseId))
 	Namo = Name.split(' ')[0].lower()
 	hash_object = hashlib.sha256(b'randint(0,20)')
 	txnid=hash_object.hexdigest()[0:20]
 	hashh = ''
 	price = round(float(Product.Price), 2)
-	hashSequence = "FEG7f40y|"+str(txnid)+"|"+str(price)+"|"+str(CourseId)+"|"+Namo+"|"+Email+"||"+Name+"|"+str(Phone)+"|||||||"
+	hashSequence = "FEG7f40y|"+str(txnid)+"|"+str(price)+"|"+str(CourseId)+"|"+Namo+"|"+Email+"||"+Name+"|"+str(Phone)+"||"+Address+"|||||"
 	hash_string=hashSequence
 	hash_string+='|'
 	hash_string+=SALT
@@ -256,13 +259,14 @@ def TPaymentSuccess(request):
 	udf1=request.POST['udf1']
 	Name=request.POST['udf2']
 	Phone=request.POST['udf3']
+	Address=request.POST['udf5']
 	salt=SALT
 	Product = TrainingProgram.objects.get(id = int(productinfo))
 	try:
 		additionalCharges=request.POST["additionalCharges"]
-		retHashSeq=additionalCharges+'|'+salt+'|'+status+'||||||||'+Phone+'|'+Name+'||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
+		retHashSeq=additionalCharges+'|'+salt+'|'+status+'||||||'+Address+'||'+Phone+'|'+Name+'||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
 	except Exception:
-		retHashSeq = salt+'|'+status+'||||||||'+Phone+'|'+Name+'||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
+		retHashSeq = salt+'|'+status+'||||||'+Address+'||'+Phone+'|'+Name+'||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
 	hashh=hashlib.sha512(retHashSeq.encode('utf-8')).hexdigest().lower()
 	if(hashh !=posted_hash):
 		s=False
@@ -295,6 +299,7 @@ def TPaymentSuccess(request):
 			NewApplicant.Email = email
 			NewApplicant.CourseId = Product.id
 			NewApplicant.Phone = Phone
+			NewApplicant.Address = Address
 			NewApplicant.save()
 			vardict = {"txnid":txnid,"status":status,"amount":amount, "s":s, 'Product':Product, 'user':NewApplicant,'Media' : MEDIA_URL}
 			return render(request, 'TSuccessPg.html', vardict)
@@ -313,6 +318,7 @@ def TPaymentFailure(request):
 	udf1=request.POST['udf1']
 	Name=request.POST['udf2']
 	Phone=request.POST['udf3']
+	Address=request.POST['udf5']
 	salt=SALT
 	Product = TrainingProgram.objects.get(id = int(productinfo))
 	s=False

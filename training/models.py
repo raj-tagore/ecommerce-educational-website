@@ -49,6 +49,7 @@ class TrainingApplicant(models.Model):
 	Phone = models.BigIntegerField(default = 9898989898)
 	CourseId = models.IntegerField(default=0)
 	Confirmed = models.BooleanField(default = False)
+	Address = models.TextField(default='null')
 
 	def __str__(self):
 		return self.Name

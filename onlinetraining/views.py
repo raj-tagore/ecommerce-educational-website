@@ -27,7 +27,7 @@ PAYU_MODE = "TEST"
 def TrainingPg(request):
 	Programs = OnlineTrainingProgram.objects.all()
 	SelectedCategory = 'Null'
-	RelevantObj = []
+	RelevantObj = [] 
 	for i in Programs:
 		if i.Display == True:
 			RelevantObj.append(i)
@@ -138,58 +138,12 @@ def MoreAboutTraining(request, CourseName):
 	Course = OnlineTrainingProgram.objects.get(Name = CourseName)
 	return render(request, "OnlineMoreAboutTraining.html", {'SelectedTraining' : Course, 'Media' : MEDIA_URL})
 
-'''def SaveDataOfApplicant(request):
-	Name = request.POST["name"]
-	Email = request.POST["email"]
-	Phone = request.POST["phone"]
-	Course = request.POST["Course"]
-	Applicants = TrainingApplicants.objects.all()
-	CourseObj = TrainingPrograms.objects.get(Name = Course)
-	exists = False
-	for i in Applicants:
-		if(i.Phone == int(Phone)):
-			if(i.Course == Course):
-				s = "Phone number is already registered to this program"
-				exists = True
-			else:
-				continue	
-		else:
-			continue
-	if(exists):
-		return render(request, 'ApplyForTrainingForm.html', {'s': s, 'Course' : CourseObj, 'Media' : MEDIA_URL})
-	else:
-		NewApplicant = TrainingApplicants()
-		NewApplicant.Name = Name
-		NewApplicant.Email = Email
-		NewApplicant.Course = Course
-		NewApplicant.Phone = Phone
-		NewApplicant.save()
-		s = 'You have successfully registered for this Program. We will contact you shortly'
-		return render(request, 'ApplyForTrainingForm.html', {'s': s, 'Course' : CourseObj, 'Media' : MEDIA_URL})
-
-def AddClient(request):
-	Name = request.POST["Name"]
-	Email = request.POST["Email"]
-	Phone = request.POST["Phone"]
-	Corporation = request.POST["CName"]
-	Position = request.POST["Position"]
-	Subject = request.POST["Subject"]
-	NewClient = Client()
-	NewClient.Name = Name
-	NewClient.Email = Email
-	NewClient.Phone = Phone
-	NewClient.Corporation = Corporation
-	NewClient.Position = Position
-	NewClient.Subject = Subject
-	NewClient.save()
-	s = 'Thank you for choosing us! We will contact you within 12 working hours.'
-	return render(request, 'HostTrainingPrograms.html', {'s': s})'''
-
 def Pay2(request):
-	Name = request.POST["Name"]
+	Name = request.POST["Name"] 
 	Email = request.POST["Email"]
 	Phone = request.POST["Phone"]
 	CourseId = request.POST["CourseId"]
+	Address = request.POST["Address1"]+", "+request.POST["Address2"]+", "+request.POST["Address3"]+", "+request.POST["PinCode"]
 	Applicants = OnlineTrainingApplicant.objects.all()
 	TrainingObj = OnlineTrainingProgram.objects.get(id = CourseId)
 	exists = False
@@ -209,7 +163,8 @@ def Pay2(request):
 					'Name': Name,
 					'Email': Email,
 					'Phone': Phone,
-					'CourseId': TrainingObj.id}
+					'CourseId': TrainingObj.id,
+					'Address': Address}
 		return render(request, 'Tbuy.html', VarDict)
 
 def Pay3(request):
@@ -217,13 +172,14 @@ def Pay3(request):
 	Email = request.POST["Email"]
 	Phone = request.POST["Phone"]
 	CourseId = request.POST["CourseId"]
+	Address = request.POST["Address"]
 	Product = OnlineTrainingProgram.objects.get(id = int(CourseId))
 	Namo = Name.split(' ')[0].lower()
 	hash_object = hashlib.sha256(b'randint(0,20)')
 	txnid=hash_object.hexdigest()[0:20]
 	hashh = ''
 	price = round(float(Product.Price), 2)
-	hashSequence = "FEG7f40y|"+str(txnid)+"|"+str(price)+"|"+str(CourseId)+"|"+Namo+"|"+Email+"||"+Name+"|"+str(Phone)+"|||||||"
+	hashSequence = "FEG7f40y|"+str(txnid)+"|"+str(price)+"|"+str(CourseId)+"|"+Namo+"|"+Email+"||"+Name+"|"+str(Phone)+"||"+Address+"|||||"
 	hash_string=hashSequence
 	hash_string+='|'
 	hash_string+=SALT
@@ -233,6 +189,7 @@ def Pay3(request):
 		'Phone' : Phone,
 		'Email' : Email,
 		'Product' : Product,
+		'Address' : Address,
 		'price' : price,
 		'PAYU_MERCHANT_KEY' : PAYU_MERCHANT_KEY,
 		'PAYU_MERCHANT_SALT' : PAYU_MERCHANT_SALT,
@@ -257,14 +214,15 @@ def OTPaymentSuccess(request):
 	udf1=request.POST['udf1']
 	Name=request.POST['udf2']
 	Phone=request.POST['udf3']
+	Address=request.POST['udf5']
 	salt=SALT
 	print("ok this runs")
 	Product = OnlineTrainingProgram.objects.get(id = int(productinfo))
 	try:
 		additionalCharges=request.POST["additionalCharges"]
-		retHashSeq=additionalCharges+'|'+salt+'|'+status+'||||||||'+Phone+'|'+Name+'||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
+		retHashSeq=additionalCharges+'|'+salt+'|'+status+'||||||'+Address+'||'+Phone+'|'+Name+'||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
 	except Exception:
-		retHashSeq = salt+'|'+status+'||||||||'+Phone+'|'+Name+'||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
+		retHashSeq = salt+'|'+status+'||||||'+Address+'||'+Phone+'|'+Name+'||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
 	hashh=hashlib.sha512(retHashSeq.encode('utf-8')).hexdigest().lower()
 	if(hashh !=posted_hash):
 		s=False
@@ -297,6 +255,7 @@ def OTPaymentSuccess(request):
 			NewApplicant.Email = email
 			NewApplicant.CourseId = Product.id
 			NewApplicant.Phone = Phone
+			NewApplicant.Address = Address
 			NewApplicant.save()
 			vardict = {"txnid":txnid,"status":status,"amount":amount, "s":s, 'Product':Product, 'user':NewApplicant,'Media' : MEDIA_URL}
 			return render(request, 'TSuccessPg.html', vardict)
