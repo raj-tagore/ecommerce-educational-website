@@ -236,6 +236,7 @@ def Pay3(request):
 		'Email' : Email,
 		'Product' : Product,
 		'price' : price,
+		'Address': Address,
 		'PAYU_MERCHANT_KEY' : PAYU_MERCHANT_KEY,
 		'PAYU_MERCHANT_SALT' : PAYU_MERCHANT_SALT,
 		'TxnId' :txnid,
