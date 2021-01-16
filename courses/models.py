@@ -54,5 +54,8 @@ class CourseApplicant(models.Model):
 	CourseName = models.CharField(default='null', max_length=50)
 	Confirmed = models.BooleanField(default = False)
 
+	def __str__(self):
+		return self.Name
+
 
 	
