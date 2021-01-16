@@ -3,5 +3,10 @@ from .models import Course, CourseApplicant
 
 
 # Register your models here.
-admin.site.register(Course)
-admin.site.register(CourseApplicant)
+class CourseTable(admin.ModelAdmin):
+    list_display= ('id', 'Name', 'Price')
+admin.site.register(Course, CourseTable)
+
+class CourseApplicantTable(admin.ModelAdmin):
+    list_display= ('id', 'Name', 'CourseName', 'Email', 'Phone')
+admin.site.register(CourseApplicant, CourseApplicantTable)
