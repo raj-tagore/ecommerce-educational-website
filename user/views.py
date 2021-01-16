@@ -32,6 +32,7 @@ def AddUserInfo(request):
 	Email = request.POST["Email"]
 	Password = request.POST["Password"]
 	Phone = request.POST["Phone"]
+	Address = request.POST["Address1"]+", "+request.POST["Address2"]+", "+request.POST["Address3"]+", "+request.POST["PinCode"]
 	Persons = User.objects.all()
 	Exists = False 
 	for i in Persons:
@@ -48,9 +49,10 @@ def AddUserInfo(request):
 			continue
 	if(Exists):
 		return render(request, 'regs.html', {'Prompt': Prompt})
-	else:
+	else: 
 		NewUser = User()
 		NewUser.Name = Name
+		NewUser.Address = Address
 		NewUser.Email = Email
 		NewUser.Password = Password
 		NewUser.Phone = Phone

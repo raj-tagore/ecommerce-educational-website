@@ -48,6 +48,7 @@ class TrainingApplicant(models.Model):
 	Email = models.EmailField(max_length = 70)
 	Phone = models.BigIntegerField(default = 9898989898)
 	CourseId = models.IntegerField(default=0)
+	CourseName = models.CharField(default='null', max_length=50)
 	Confirmed = models.BooleanField(default = False)
 	Address = models.TextField(default='null')
 

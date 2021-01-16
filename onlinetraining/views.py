@@ -149,7 +149,7 @@ def Pay2(request):
 	exists = False
 	for i in Applicants:
 		if(int(i.Phone) == int(Phone)):
-			if(i.CourseId == TrainingObj.id):
+			if(i.CourseId == CourseId):
 				s = "This Phone number is already registered to this program"
 				exists = True
 			else:
@@ -254,6 +254,7 @@ def OTPaymentSuccess(request):
 			NewApplicant.Name = Name
 			NewApplicant.Email = email
 			NewApplicant.CourseId = Product.id
+			NewApplicant.CourseName = Product.Name
 			NewApplicant.Phone = Phone
 			NewApplicant.Address = Address
 			NewApplicant.save()

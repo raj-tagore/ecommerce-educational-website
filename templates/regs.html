@@ -13,7 +13,7 @@
     <!-- Main css -->
     <link rel="stylesheet" href="{% static 'Register/css/style.css'%}">
 </head>
-<body>
+<body> 
 
     <div class="main">
         <div class="container">
@@ -36,12 +36,28 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="address">Address Line 1:</label>
+                            <input type="text" name="Address1" id="Address1" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address Line 2:</label>
+                            <input type="text" name="Address2" id="Address2" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">State:</label>
+                            <input type="text" name="Address3" id="Address3" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="pincode">Pincode :</label>
+                            <input type="text" name="PinCode" id="PinCode" required/>
+                        </div>
+                        <div class="form-group">
                             <label for="Email">Email ID :</label>
-                            <input type="Email" name="Email" id="Email" />
+                            <input type="Email" name="Email" id="Email" required/>
                         </div>
                         <div class="form-group">
                             <label for="Password">Password :</label>
-                            <input type="Password" name="Password" id="Password" />
+                            <input type="Password" name="Password" id="Password" required/>
                         </div>
                         <div class="form-submit">
                             <input type="submit" value="Register" class="submit" name="submit" id="submit" />

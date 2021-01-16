@@ -36,7 +36,7 @@ def MakeTagsList():
 		AllTags.sort()
 	AllDiffTags.append(AllTags[0])
 	for m in range(len(AllTags)):
-		if AllTags[m]==AllDiffTags[-1]:
+		if AllTags[m]==AllDiffTags[-1]: 
 			continue
 		else:
 			AllDiffTags.append(AllTags[m])
@@ -148,7 +148,7 @@ def Pay2(request, CourseId2):
 	Email = request.POST["Email"]
 	Password = request.POST["Password"]
 	CourseId = request.POST["CourseId"]
-	if(CourseId == CourseId2):
+	if(CourseId == CourseId2): 
 		Persons = User.objects.all()
 		for i in Persons:
 			if (i.Email == Email):
@@ -227,6 +227,14 @@ def PaymentSuccess(request):
 		print "We have received a payment of Rs. ", amount ,". Your order will soon be shipped."'''
 		s=True
 		user.Courses.add(Product)
+		NewApplicant = CourseApplicant()
+		NewApplicant.Name = Name
+		NewApplicant.Email = email
+		NewApplicant.CourseId = Product.id
+		NewApplicant.CourseName = Product.Name
+		NewApplicant.Phone = Phone
+		NewApplicant.Address = Address
+		NewApplicant.save()
 		vardict = {"txnid":txnid,"status":status,"amount":amount, "s":s, 'Product':Product, 'user':user,'Media' : MEDIA_URL}
 	return render(request, 'SuccessPg.html', vardict)
 

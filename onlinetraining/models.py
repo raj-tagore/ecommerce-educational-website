@@ -36,14 +36,15 @@ class OnlineTrainingProgram(models.Model):
 
 	def __str__(self):
 		return self.Name
-
+ 
 class OnlineTrainingApplicant(models.Model):
 	Name = models.CharField(max_length = 40)
+	Address = models.TextField(default='null')
 	Email = models.EmailField(max_length = 70)
 	Phone = models.BigIntegerField(default = 9898989898)
 	CourseId = models.IntegerField(default=0)
+	CourseName = models.CharField(default='null', max_length=50)
 	Confirmed = models.BooleanField(default = False)
-	Address = models.TextField(default='null')
 
 	def __str__(self):
 		return self.Name

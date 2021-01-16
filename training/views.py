@@ -299,6 +299,7 @@ def TPaymentSuccess(request):
 			NewApplicant.Name = Name
 			NewApplicant.Email = email
 			NewApplicant.CourseId = Product.id
+			NewApplicant.CourseName = Product.Name
 			NewApplicant.Phone = Phone
 			NewApplicant.Address = Address
 			NewApplicant.save()
