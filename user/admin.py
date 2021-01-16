@@ -3,7 +3,7 @@ from .models import User, ThreeFeaturedPic
 # Register your models here.
 
 class UserTable(admin.ModelAdmin):
-    list_display= ('Name', 'Address', 'Email', 'Phone', 'Courses', 'id')
+    list_display= ('Name', 'Address', 'Email', 'Phone', 'id')
 admin.site.register(User, UserTable)
 class ThreeFeaturedPicTable(admin.ModelAdmin):
     list_display= ('Position', 'URLPointer', 'id') 
