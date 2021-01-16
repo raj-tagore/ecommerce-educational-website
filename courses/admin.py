@@ -4,9 +4,9 @@ from .models import Course, CourseApplicant
 
 # Register your models here.
 class CourseTable(admin.ModelAdmin):
-    list_display= ('id', 'Name', 'Price')
+    list_display= ('Name', 'Price', 'id')
 admin.site.register(Course, CourseTable)
 
 class CourseApplicantTable(admin.ModelAdmin):
-    list_display= ('id', 'Name', 'CourseName', 'Email', 'Phone')
+    list_display= ('Name', 'CourseName', 'Email', 'Phone', 'id')
 admin.site.register(CourseApplicant, CourseApplicantTable)
