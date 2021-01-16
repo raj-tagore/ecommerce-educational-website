@@ -228,12 +228,12 @@ def PaymentSuccess(request):
 		s=True
 		user.Courses.add(Product)
 		NewApplicant = CourseApplicant()
-		NewApplicant.Name = Name
+		NewApplicant.Name = user.Name
 		NewApplicant.Email = email
 		NewApplicant.CourseId = Product.id
 		NewApplicant.CourseName = Product.Name
-		NewApplicant.Phone = Phone
-		NewApplicant.Address = Address
+		NewApplicant.Phone = user.Phone
+		NewApplicant.Address = user.Address
 		NewApplicant.save()
 		vardict = {"txnid":txnid,"status":status,"amount":amount, "s":s, 'Product':Product, 'user':user,'Media' : MEDIA_URL}
 	return render(request, 'SuccessPg.html', vardict)
