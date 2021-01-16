@@ -15,7 +15,7 @@ class Product(models.Model):
 	Display = models.BooleanField(default = True)
 	Position = models.IntegerField(default=1)
 	DaysForDelivery = models.IntegerField(default=8)
-
+ 
 	def __str__(self):
 		return self.Name
 

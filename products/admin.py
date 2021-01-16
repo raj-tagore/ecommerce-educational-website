@@ -3,6 +3,11 @@ from .models import Product, Buyer
 
 
 # Register your models here.
-admin.site.register(Product)
-admin.site.register(Buyer)
+class ProductTable(admin.ModelAdmin):
+    list_display= ('Name', 'Price', 'DiscountedPrice', 'ActivateDiscount', 'Display', 'Position', 'id')
+admin.site.register(Product, ProductTable)
+
+class BuyerTable(admin.ModelAdmin):
+    list_display= ('Name', 'ProductName', 'Phone', 'Email', 'id')
+admin.site.register(Buyer, BuyerTable)
 

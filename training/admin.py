@@ -3,5 +3,9 @@ from .models import TrainingProgram, TrainingApplicant,TrainingApplicantType, Tr
 
 
 # Register your models here.
-admin.site.register(TrainingProgram)
-admin.site.register(TrainingApplicant)
+class TrainingTable(admin.ModelAdmin):
+    list_display= ('Name', 'Price', 'Position', 'Dates', 'Display', 'Language', 'id')
+admin.site.register(TrainingProgram, TrainingTable)
+class TrainingApplicantTable(admin.ModelAdmin):
+    list_display= ('Name', 'CourseName', 'Email', 'Phone', 'id')
+admin.site.register(TrainingApplicant, TrainingApplicantTable)

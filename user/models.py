@@ -9,7 +9,7 @@ class User(models.Model):
 	Email = models.EmailField(max_length = 70)
 	Password = models.CharField(max_length = 50)
 	Phone = models.BigIntegerField(default = 9898989898)
-	Premium = models.BooleanField(default = False)
+	Premium = models.BooleanField(default = False) 
 	Courses = models.ManyToManyField(Course) 
 	
 	def __str__(self):
