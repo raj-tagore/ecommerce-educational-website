@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Course
+from .models import Course, CourseApplicant
 from user.models import User
 import os
 from django.shortcuts import HttpResponse
