@@ -195,6 +195,9 @@
                                 <h4 class="mb-30"><h4><b>Price:</b></h4><br> Rs. {{SelectedTraining.Price}}</h4><br><br><br>
                                 <div class="button-group-area mt-40">
                                     <a href="https://www.rajeshtagore.com/trainingonline/ApplyFor/{{SelectedTraining.Name}}/" class="genric-btn primary e-large">Apply To Above Course</a>
+                                    {% if SelectedTraining.StartMeeting == True %}
+                                    <a href="https://www.rajeshtagore.com/trainingonline/VerifyFor/{{SelectedTraining.Name}}/" class="genric-btn info">Join Meeting</a>
+                                    {% endif %}
                                     <br><br><br><br>
                                 </div>
                         </div>

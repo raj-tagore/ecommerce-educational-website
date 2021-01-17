@@ -33,6 +33,8 @@ class OnlineTrainingProgram(models.Model):
 	FreeMaterials = models.TextField(default = 'null')
 	DaywiseSchedule = models.TextField(default = 'null')
 	SpecialAttractions = models.TextField(default = 'null')
+	MeetingLink = models.TextField(default = 'null')
+	StartMeeting = models.BooleanField(default = False)
 
 	def __str__(self):
 		return self.Name

@@ -19,5 +19,7 @@ urlpatterns = [
     re_path(r'NetworkMarketing/$', views.NetworkMarketingTrainingPg),
     re_path(r'Business/$', views.BusinessTrainingPg),
     re_path(r'SelfDevelopment/$', views.SelfDevelopmentTrainingPg),
-    path('ReadMore/<CourseName>/', views.MoreAboutTraining),  
+    path('ReadMore/<CourseName>/', views.MoreAboutTraining),
+    path('VerifyFor/<CourseName>/', views.VerifyParticipantForm), 
+    re_path(r'JoinMeeting/$', views.ActuallyJoinTraining)
 ]

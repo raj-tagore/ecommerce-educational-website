@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fill Form to continue</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'Register/fonts/material-icon/css/material-design-iconic-font.min.css'%}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'Register/css/style.css'%}">
+</head>
+<body>
+
+    <div class="main">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-img">
+                    <img src="{{Media}}{{Product.FrontPic}}" alt="" class = 'center'>
+                </div>
+                <div class="signup-form">
+                    <form method="POST" class="register-form" id="register-form" action="JoinMeeting/">
+                    <!--form method="POST" class="register-form" id="register-form" action="AddParticipantForTraining/"-->
+                        {%csrf_token%}
+                        {% if Prompt %}
+                        <h2>{{Prompt}}<br><label for="name"></label></h2>
+                        {% else %}
+                        <h2>Fill form to continue:<br><label for="Name"></label></h2>
+                        <div class="form-row">
+                            <input type="hidden" name="CourseId" id="CourseId" value = "{{Course.id}}" required/>
+                            <div class="form-group">
+                                <label for="Roll Number">Roll Number:</label>
+                                <input type="number" name="RollNo" id="RollNo" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">WhatsApp Phone No. :</label>
+                                <input type="tel" name="Phone" id="Phone" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email ID :</label>
+                            <input type="email" name="Email" id="Email" required/>
+                        </div>
+                        <div class="form-submit">
+                            <input type="submit" value="Proceed" class="submit" name="submit" id="submit" />
+                        </div>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{% static 'Register/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'Register/js/main.js'%}"></script>
+
+</body>
+</html>

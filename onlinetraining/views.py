@@ -265,3 +265,35 @@ def OTPaymentSuccess(request):
 @csrf_exempt
 def OTPaymentFailure(request):
 	return HttpResponse("Your transaction failed, Return to the homepage and try again")
+
+
+def VerifyParticipantForm(request, CourseName):
+	Course = OnlineTrainingProgram.objects.get(Name = CourseName)
+	VarDict = {'Course': Course}
+	return render(request, 'OTVerifyYourself.html', VarDict)
+
+	
+
+def ActuallyJoinTraining(request):
+	CourseId = request.POST['CourseId']
+	RollNo = request.POST['RollNo']
+	Phone = request.POST['Phone']
+	Email = request.POST['Email']
+	Course = OnlineTrainingProgram.objects.get(id = CourseId)
+	AllApplicants = OnlineTrainingApplicant.objects.all()
+	JoinedApplicants = [i for i in AllApplicants if int(i.CourseId) == int(Course.id)]
+	Verified = False
+	MeetingLink = ''
+	for i in JoinedApplicants:
+		if int(i.id) == int(RollNo): 
+			if int(i.Phone) == int(Phone):
+				Verified = True
+				MeetingLink = Course.MeetingLink
+				VarDict = {'Verified' : Verified, 'MeetingLink' : MeetingLink, 'Course' : Course}
+				return render(request, "OTParticipantConfirmed.html", VarDict)
+			else:
+				continue
+		else:
+			continue
+	VarDict = {'Verified' : Verified, 'MeetingLink' : MeetingLink, 'Course' : Course}
+	return render(request, "OTParticipantConfirmed.html", VarDict)

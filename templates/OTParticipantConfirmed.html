@@ -93,7 +93,7 @@
                                                 </ul>
                                             </li>
                                             <li><a onclick="Courses()">Recorded Courses</a> </li>
-                                            <li><a onclick="Products()">Products</a></li>
+                                            <li><a onclick="Courses()">Courses</a></li>
                                             <li><a onclick="Resources()">Resources<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a onclick="Resources()">All</a></li>
@@ -149,7 +149,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>Apply for one of our Training Sessions:</h3>
+                        <h3>Select your method of Payment</h3>
                     </div>
                 </div>
             </div>
@@ -159,69 +159,55 @@
     <div class="portfolio_details_area" style="padding-top: 200px; padding-bottom: 0px">
         <div class="container">
             <div class="row">
-                <div class="col-xl-8 offset-xl-2"> 
+                <div class="col-xl-8 offset-xl-2">
                     <div class="portfolio_details_content text-center mb-50">
-                        <span>Home- Online Training</span>
-                        <h3>Online Training Sessions</h3>
-                            <p>Online courses tutored by Rajesh Tagore</p>
+                        <span>Home- Training- Apply For Course</span>
+                        <h3>One More Step...</h3>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <div class="portfolio_details_area">
-        {% for i in programs %}
-        <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="portfolio_details_thumb">
-                            <img src="{{Media}}{{i.FrontPic}}" alt="">
-                        </div>
-                    </div> 
-                </div>
-                <div class="row">
-                    <div class="col-xl-8 offset-xl-2">
-                        <div class="portfolio_details_content mt-50 mb-50 text-center">
-                                <h4>{{i.Name}}:</h4>
-                                <p>{{i.About}}</p>
-                                <p><b>Category: </b>{% for j in i.Category.all %}{{j.Name}}, {% endfor %}</p>
-                                <p><b>Specially For: </b>{% for k in i.ApplicantType.all %}{{k.Name}}, {% endfor %}</p>
-                                <h5 class="mb-30"><b>Hosted at:</b> {{i.Address}}</h5>
-                                <h4 class="mb-30"><b>Price:</b> Rs. {{i.Price}}</h4>
-                                <div class="button-group-area mt-40">
-                                    <a href="ApplyFor/{{i.Name}}/" class="genric-btn primary e-large">Apply To Above Course</a>
-                                    <a href="ReadMore/{{i.Name}}/" class="genric-btn primary e-large">Read More</a>
-                                    {% if i.StartMeeting == True %}
-                                    <a href="VerifyFor/{{i.Name}}/" class="genric-btn info">Join Meeting</a>
-                                    {% endif %}
-                                    <br><br><br><br>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-    
-
-
-    <!-- project  -->
-    <div class="project_area">
+    <section class="blog_area section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-xl-12">
-                    <div class="project_info text-center">
-                        <h3>Hire Rajesh Tagore:</h3>
-                        <p>Want to host a training session? Or do you want a personal meeting? Click to proceed...</p>
-                        <a href="training/host/" class="boxed-btn3-white">Hire Rajesh Tagore</a>
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="{{Media}}{{Course.FrontPic}}" alt="">
+                            </div>
+
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="#">
+                                    <h2>{{Course.Name}}</h2>
+                                </a>
+                                <p>{{Course.About}}</p>
+                                <ul class="blog-info-link">
+                                    <li><a href="#"><i class="fa fa-user"></i>{{Course.Tags}}</a></li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget post_category_widget">
+                            {% if Verified %}
+                            <h4 class="widget_title">Click the button to join the meeting:</h4>
+                            <a href="{{MeetingLink}}" class="genric-btn info-border">Join Meeting</a>
+                            </ul>
+                            {% else %}
+                            <h4 class="widget_title">Wrong Credentials! Click button to try again</h4>
+                            <a href="https://www.rajeshtagore.com/trainingonline/" class="genric-btn danger-border">Go Back</a>
+                            {% endif %}
+                        </aside>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--/ project  -->
+    </section>
 
     <!-- footer start -->
     <footer class="footer">
@@ -259,21 +245,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                    Browse
-                            </h3>
-                            <ul>
-                                <li><a href="training/">Training Sessions</a></li>
-                                <li><a href="products/">Products</a></li>
-                                <li><a href="coursesList/">Online Courses</a></li>
-                                <li><a href="#">Live Courses</a></li>
-                                <li><a href="about/">About Rajesh Tagore</a></li>
-                            </ul>
-
-                        </div>
-                    </div-->
                     <div class="col-xl-2 col-md-6 col-lg-2">
                         <div class="footer_widget">
                             <h3 class="footer_title">
@@ -301,7 +272,11 @@
             </div>
         </div>
     </footer>
-    <script src="{% static 'js/URLRerouting.js'%}"></script>
+    <!-- form itself end -->
+
+    <!-- JS here -->
+    <!-- JS here -->
+<script src="{% static 'js/URLRerouting.js'%}"></script>
 
     <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
     <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
