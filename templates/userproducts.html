@@ -165,17 +165,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
-                    <div class="blog_left_sidebar">
+                    <div class="blog_left_sidebar"> 
                     <h1>Your Courses:<br><br> </h1>
                         {% for i in Courses %}
                         <article class="blog_item">
                             <div class="blog_item_img">
                                 <img class="card-img rounded-0" src="{{Media}}{{i.FrontPic}}" alt="">
-                                <form action="coursesList/SpecificCourse/{{i.Name}}/", method="POST", name='CourseForm'>
-                                {% csrf_token %}
-                                <input type="hidden" name="UId" id="UId" value="{{User.id}}">
-                                <input type="hidden" name="CId" id="CId" value="{{i.id}}">
-                                <a onclick="CourseFormSubmit()" class="blog_item_date">
+                                <a href="coursesList/SpecificCourse/{{i.Name}}/" class="blog_item_date">
                                 <h3>View Course Contents</h3>
                                 </a>
                             </div>

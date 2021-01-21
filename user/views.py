@@ -96,8 +96,9 @@ def ContactView(request):
 	return render(request, 'contact.html')
 
 def ProductsView(request):
-	UId = request.POST["UId"]
+	UId = request.POST["UId"] 
 	UserObj = User.objects.get(id = int(UId))
 	Courses = UserObj.Courses.all()
+	print(Courses)
 	return render(request, 'userproducts.html', {'User' : UserObj, 'Courses' : Courses, 'Media' : MEDIA_URL})
 

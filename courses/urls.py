@@ -16,7 +16,7 @@ urlpatterns = [
     re_path(r'SearchCourseByName/$', views.SearchCourseByName),
     path('pay1/<CourseId>/', views.Pay1),
     path(r'pay1/<CourseId2>/pay2/', views.Pay2),
-    re_path(r'pay3payU/', views.Pay3PayU),
+    re_path(r'pay3payU/', views.Pay3PayU), 
     re_path('PaymentSuccess/', views.PaymentSuccess),
     re_path('PaymentFailure/', views.PaymentFailure)
 ]
