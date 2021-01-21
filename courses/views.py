@@ -47,6 +47,7 @@ def HomeView(request):
 
 def CourseListView(request):
 	CourseObjAll = Course.objects.all()
+	DisplayCourses = [i for i in CourseObjAll if i.Display == True]
 
 	#read tags from file
 	'''TagsFileObj = open('tags.txt', 'r+')
@@ -62,7 +63,7 @@ def CourseListView(request):
 	else :
 		for n in CourseObjAll:
 			RecentCourses.append(n)
-	VarDict = {'CourseObjAll' : CourseObjAll, 'media' : MEDIA_URL, 
+	VarDict = {'CourseObjAll' : DisplayCourses, 'media' : MEDIA_URL, 
 				'Tags': AllDiffTags, 'RecentCourses' : RecentCourses, 'NotSearched' : NotSearched}
 	return render(request, 'coursesList.html', VarDict) 
 
@@ -95,8 +96,10 @@ def SearchCourse(request):
 	else :
 		for n in CourseObjAll:
 			RecentCourses.append(n)
+	
+	DisplayCourses = [i for i in RelevantCourses if i.Display == True]
 
-	varDict = {'CourseObjAll' : RelevantCourses, 'media' : MEDIA_URL, 'NotSearched' : NotSearched}
+	varDict = {'CourseObjAll' : DisplayCourses, 'media' : MEDIA_URL, 'NotSearched' : NotSearched}
 
 	return render(request, 'coursesList.html', varDict) 
 
@@ -118,8 +121,9 @@ def SearchCourseByName(request):
 				RelevantCourses.append(i)
 			else:
 				continue
+	DisplayCourses = [i for i in RelevantCourses if i.Display == True]
 	
-	varDict = {'CourseObjAll' : RelevantCourses, 'media' : MEDIA_URL, 'NotSearched' : NotSearched}
+	varDict = {'CourseObjAll' : DisplayCourses, 'media' : MEDIA_URL, 'NotSearched' : NotSearched}
 
 	return render(request, 'CoursesList.html', varDict) 
 
@@ -132,13 +136,16 @@ def SpecificCourseView(request, namo):
 	videos = Course.objects.get(Name = namo)
 	UserObj = User.objects.get(id = int(UserId))
 	OwnedCourses = UserObj.Courses.all()
-	NotVerified = True
-	for i in OwnedCourses:
+	NotVerified = False
+	"""for i in OwnedCourses:
 		if(i.id == CourseId):
 			NotVerified = False
 			videos = Course.objects.get(Name = namo)
 			return render(request, 'single-blog.html', {'namo' : namo, 'videos' : videos, 'media' : MEDIA_URL, 'NotVerified' : NotVerified})
-	return render(request, 'single-blog.html', {'namo' : "No Courses bought", 'NotVerified' : NotVerified})
+	return render(request, 'single-blog.html', {'namo' : "No Courses bought", 'NotVerified' : NotVerified})"""
+	for i in OwnedCourses:
+		videos = Course.objects.get(Name = namo)
+		return render(request, 'single-blog.html', {'namo' : namo, 'videos' : videos, 'media' : MEDIA_URL, 'NotVerified' : NotVerified})
 
 def Pay1(request, CourseId):
 	Prompt = "Please login to continue with your purchase"

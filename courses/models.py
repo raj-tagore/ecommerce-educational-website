@@ -10,6 +10,7 @@ class Course(models.Model):
 	About = models.TextField(default = 'null')
 	Price = models.IntegerField(default = 0)
 	FrontPic = models.ImageField(upload_to = 'courses/frontpics/', default = 'null')
+	Display = models.BooleanField(default = False)
 	Tags = models.TextField(default = 'null')
 	videofile1 = models.TextField(default = 'null')
 	videofile2 = models.TextField(default = 'null')
