@@ -98,18 +98,21 @@ def PrepMail(BuyerId, ProductId):
 			<h4>Order Details:</h4>
 			<div class="row">
 				<div class="ProductPic">
-				<img src=" """+str(SelectedProduct.FrontPic)+""" "  alt="" width= 100%> 
+				<img src=\""""+str(SelectedProduct.FrontPic)+"""\"  alt="" width= 100%> 
 				</div>
 				<div class="ProductInfo">
 				<p><h3 class="left">"""+str(SelectedProduct.Name)+ """</h3></p>
 				</div>
 			</div>
 			<br>
-			You will find the course after you follow these steps:
-			1: Go to the Home Page
-			2: Click on 'Login'
-			3: Click on 'Items'
-			4: Look for the course you have bought, and click on 'View Course Content'
+			<br>
+			<br>
+			<br>
+			You will find the course after you follow these steps:<br>
+			1: Go to the Home Page<br>
+			2: Click on 'Login'<br>
+			3: Click on 'Items'<br>
+			4: Look for the course you have bought, and click on 'View Course Content'<br>
 			<br><br>
 			</body>
 			</html> """
