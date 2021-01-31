@@ -13,6 +13,11 @@ import datetime
 import hashlib
 from random import randint
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
+import datetime
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+import os 
 
 # Create your views here.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -213,7 +218,7 @@ def SearchCourseByName(request):
 	
 	varDict = {'CourseObjAll' : DisplayCourses, 'media' : MEDIA_URL, 'NotSearched' : NotSearched}
 
-	return render(request, 'CoursesList.html', varDict) 
+	return render(request, 'coursesList.html', varDict) 
 
 def RedirectView(request):
 	return redirect('/CourseList')
