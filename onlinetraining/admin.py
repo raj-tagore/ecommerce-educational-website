@@ -7,5 +7,5 @@ class OnlineTrainingTable(admin.ModelAdmin):
     list_display= ('Name', 'Price', 'Position', 'Dates', 'Display', 'Language', 'id')
 admin.site.register(OnlineTrainingProgram, OnlineTrainingTable)
 class OnlineTrainingApplicantTable(admin.ModelAdmin):
-    list_display= ('Name', 'CourseName', 'Email', 'Phone', 'id')
+    list_display= ('Name', 'id', 'Phone', 'CourseName', 'Email')
 admin.site.register(OnlineTrainingApplicant, OnlineTrainingApplicantTable)

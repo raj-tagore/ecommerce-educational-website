@@ -168,6 +168,8 @@
                         <span>Home- Training- Apply to Course</span>
                         {% if s == True %}
                         <h3>Thank You {{user.Name}}</h3>
+                        <h4>You have successfully applied for this Training Program
+                            <br>Your Roll Number is: {{user.id}}<br></h4>
                         {% else %}
                         <h3>...</h3>
                         {% endif %}
@@ -195,8 +197,7 @@
                             <p>{{Product.About}}</p>
                             <h4 class="mb-30">Price: Rs. {{Product.Price}}</h4>
                             {% if s == True %}
-                            <a onclick="ReplaceUrl()" class="genric-btn success">You have successfully applied for this Training Program
-                            <br>Your Roll Number is: {{user.id}}<br>
+                            <a onclick="ReplaceUrl()" class="genric-btn success">
                             Click here to go back to the Home Page.</a>
                             {% else %}
                             <a onclick="ReplaceUrl()" class="genric-btn danger">The transacton failed.

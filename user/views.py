@@ -78,7 +78,7 @@ def Verify(request):
 				Prompt = "Wrong Password"
 				return render(request, 'login.html', {'Prompt' : Prompt})
 		else:
-			Prompt = "User Doesnt Exist"
+			Prompt = "User Doesnt Exist, please register first!"
 			continue
 	return render(request, 'login.html', {'Prompt' : Prompt})
 

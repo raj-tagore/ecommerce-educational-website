@@ -23,6 +23,94 @@ PAYU_MERCHANT_KEY = "FEG7f40y"
 PAYU_MERCHANT_SALT = SALT = "lHX69YxP0p"
 PAYU_MODE = "TEST"
 
+def SendMail(Subject, TextContent, HtmlContent, Recipient):
+	Email= MIMEMultipart("alternative")
+	Email['Subject'] = Subject
+	Email['From'] = 'noreply.leader.factory@gmail.com'
+	Email['To'] = Recipient
+
+	ConvertedText = MIMEText(TextContent, 'plain')
+	ConvertedHTML = MIMEText(HtmlContent, 'html')
+	Email.attach(ConvertedText)
+	Email.attach(ConvertedHTML)
+
+	s = smtplib.SMTP('smtp.gmail.com', 587)
+	s.connect("smtp.gmail.com",587)
+	s.ehlo()
+	s.starttls()
+	s.ehlo()
+	s.login('noreply.leader.factory@gmail.com', 'noreplyLF1234')
+	s.sendmail('noreply.leader.factory@gmail.com', Recipient, Email.as_string())
+	s.quit()
+
+def PrepMail(BuyerId, ProductId):
+	SelectedProduct = Course.objects.get(id = int(ProductId))
+	SelectedBuyer = CourseApplicant.objects.get(id = int(BuyerId))
+
+	RecipientEmail = str(SelectedBuyer.Email)
+
+	Subject = "Your Purchase has been confirmed"
+
+	Text = """
+			Thank You, Mr.""" +str(SelectedBuyer.Name)+ """
+			You have successfully bought the course!
+			Details:
+			""" +str(SelectedProduct.Name)+ """
+
+			You will find the course after you follow these steps:
+			1: Go to the Home Page
+			2: Click on 'Login'
+			3: Click on 'Items'
+			4: Look for the course you have bought, and click on 'View Course Content'
+			"""
+
+	HTML = """
+			<html>
+			<head>
+			<style>
+			h1 {text-align: center;}
+			h2 {text-align : center;}
+			h4 {text-align: left;}
+			body {text-align: center;}
+			.left {text-align: left;}
+			.row {background-color: lightyellow;}
+			.ProductPic {float: left;
+						width: 30%;
+						padding: 10px;}
+			.ProductInfo {float: right;
+						width: 60%;
+						padding: 10px;
+						text-align: left;}
+			.row::after {content: '';
+						clear: both;
+						display: table;}
+			</style>
+			</head>
+			<body>
+			<h1>Thank You</h1>
+			<h3>Mr. """ +str(SelectedBuyer.Name)+ """</h3>
+			<h3>Your order has been successfully placed</h3>
+			<h4>Order Details:</h4>
+			<div class="row">
+				<div class="ProductPic">
+				<img src=" """+str(SelectedProduct.FrontPic)+""" "  alt="" width= 100%> 
+				</div>
+				<div class="ProductInfo">
+				<p><h3 class="left">"""+str(SelectedProduct.Name)+ """</h3></p>
+				</div>
+			</div>
+			<br>
+			You will find the course after you follow these steps:
+			1: Go to the Home Page
+			2: Click on 'Login'
+			3: Click on 'Items'
+			4: Look for the course you have bought, and click on 'View Course Content'
+			<br><br>
+			</body>
+			</html> """
+	
+	SendMail(Subject, Text, HTML, RecipientEmail)
+
 def MakeTagsList():
 	CourseObjAll = Course.objects.all()
 	CourseTags = []
@@ -162,7 +250,7 @@ def Pay2(request, CourseId2):
 					Prompt = "Wrong Password"
 					return render(request, 'login2.html', {'Prompt' : Prompt})
 			else:
-				Prompt = "User Doesnt Exist"
+				Prompt = "User Doesnt Exist, please register first!"
 				continue
 		return render(request, 'login2.html', {'Prompt' : Prompt})
 	else:
@@ -238,6 +326,7 @@ def PaymentSuccess(request):
 		NewApplicant.Phone = user.Phone
 		NewApplicant.Address = user.Address
 		NewApplicant.save()
+		PrepMail(NewApplicant.id, Product.id)
 		vardict = {"txnid":txnid,"status":status,"amount":amount, "s":s, 'Product':Product, 'user':user,'Media' : MEDIA_URL}
 	return render(request, 'SuccessPg.html', vardict)
 
@@ -260,4 +349,3 @@ def PaymentFailure(request):
 	vardict = {"txnid":txnid,"status":status,"amount":amount,"s":s, 'Product':Product, 'user':user,'Media' : MEDIA_URL}
 	return render(request, 'SuccessPg.html', vardict)
 	
-
