@@ -7,6 +7,7 @@ urlpatterns = [
     path(r'', views.HomeView),
     re_path(r'index$', views.HomeView),
     re_path(r'login/$', views.LoginView),
+    re_path(r'register/$', views.RegisterView),
     re_path(r'register$', views.RegisterView),
     re_path(r'verify$', views.Verify),
     re_path(r'logout$', views.Logout),
