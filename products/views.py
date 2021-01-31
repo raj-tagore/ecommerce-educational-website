@@ -209,7 +209,7 @@ def PaymentSuccess(request):
 		NewBuyer.ProductId = SelectedProduct.id
 		NewBuyer.ProductName = SelectedProduct.Name
 		NewBuyer.save()
-		PrepMail(NewBuyer.id, NewBuyer.ProductId)
+		#PrepMail(NewBuyer.id, NewBuyer.ProductId)
 		#user.Courses.add(Product)
 		vardict = {"txnid":txnid,"status":status,"amount":amount, "s":s, 'Product':SelectedProduct, 'user':NewBuyer,'Media' : MEDIA_URL}
 	return render(request, 'PSuccessPg.html', vardict)

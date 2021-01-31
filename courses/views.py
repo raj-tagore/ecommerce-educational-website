@@ -334,7 +334,7 @@ def PaymentSuccess(request):
 		NewApplicant.Phone = user.Phone
 		NewApplicant.Address = user.Address
 		NewApplicant.save()
-		PrepMail(NewApplicant.id, Product.id)
+		#PrepMail(NewApplicant.id, Product.id)
 		vardict = {"txnid":txnid,"status":status,"amount":amount, "s":s, 'Product':Product, 'user':user,'Media' : MEDIA_URL}
 	return render(request, 'SuccessPg.html', vardict)
 
