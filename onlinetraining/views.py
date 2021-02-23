@@ -111,7 +111,7 @@ def SelfDevelopmentTrainingPg(request):
 	Programs = OnlineTrainingProgram.objects.all()
 	DisplayedPrograms = []
 	for i in Programs:
-		if i.Display == True:
+		if i.Display == True: 
 			DisplayedPrograms.append(i) 
 	SelectedCategory = 'Self Development'
 	RelevantObj = []

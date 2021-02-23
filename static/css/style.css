@@ -5762,7 +5762,7 @@ h6 {
 /* line 529, ../../Arafath/CL/CL October/213. Business/HTML/scss/_blog.scss */
 .blog_details {
   padding: 30px 0 20px 10px;
-  box-shadow: 0px 10px 20px 0px rgba(221, 221, 221, 0.3);
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.3);
 }
 
 @media (min-width: 768px) {

@@ -5,12 +5,15 @@ import os
 
 # Create your models here.
 class Course(models.Model):
+	LanguageChoices = (('Hindi', 'Hindi'), ('English', 'English'))
 
 	Name = models.CharField(max_length = 50)
 	About = models.TextField(default = 'null')
 	Price = models.IntegerField(default = 0)
 	FrontPic = models.ImageField(upload_to = 'courses/frontpics/', default = 'null')
 	Display = models.BooleanField(default = False)
+	Position = models.IntegerField(default=1)
+	Language = models.CharField(max_length=50, choices=LanguageChoices, default='Hindi') 
 	Tags = models.TextField(default = 'null')
 	videofile1 = models.TextField(default = 'null')
 	videofile2 = models.TextField(default = 'null')

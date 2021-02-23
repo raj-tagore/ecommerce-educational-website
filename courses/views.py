@@ -153,15 +153,65 @@ def CourseListView(request):
 
 	RecentCourses = []
 	NotSearched = True
-	if (len(CourseObjAll)>5):
-		for n in range(len(CourseObjAll)-5, len(CourseObjAll)):
-			RecentCourses.append(CourseObjAll[n])
+	if (len(DisplayCourses)>5):
+		for n in range(len(DisplayCourses)-5, len(DisplayCourses)):
+			RecentCourses.append(DisplayCourses[n])
 	else :
-		for n in CourseObjAll:
+		for n in DisplayCourses:
 			RecentCourses.append(n)
+
+	DisplayCourses = sorted(DisplayCourses, key=lambda Course: Course.Position)
 	VarDict = {'CourseObjAll' : DisplayCourses, 'media' : MEDIA_URL, 
-				'Tags': AllDiffTags, 'RecentCourses' : RecentCourses, 'NotSearched' : NotSearched}
+				'Tags': AllDiffTags, 'RecentCourses' : RecentCourses, 'NotSearched' : NotSearched, 'Filtered': False, 'Language': 'null'}
 	return render(request, 'coursesList.html', VarDict) 
+
+def HindiCourseListView(request):
+	CourseObjAll = Course.objects.all()
+	DisplayCourses = [i for i in CourseObjAll if i.Display == True]
+
+	#read tags from file
+	'''TagsFileObj = open('tags.txt', 'r+')
+	TagsArr = TagsFileObj.read().split()'''
+	#make new tags list thru function
+	AllDiffTags = MakeTagsList()
+
+	RecentCourses = []
+	NotSearched = False
+	if (len(DisplayCourses)>5):
+		for n in range(len(DisplayCourses)-5, len(DisplayCourses)):
+			RecentCourses.append(DisplayCourses[n])
+	else :
+		for n in DisplayCourses:
+			RecentCourses.append(n)
+
+	DisplayCourses = sorted(DisplayCourses, key=lambda Course: Course.Position)
+	VarDict = {'CourseObjAll' : DisplayCourses, 'media' : MEDIA_URL, 
+				'Tags': AllDiffTags, 'RecentCourses' : RecentCourses, 'NotSearched' : NotSearched, 'Filtered': True, 'Language': 'Hindi'}
+	return render(request, 'coursesList.html', VarDict)
+
+def EnglishCourseListView(request):
+	CourseObjAll = Course.objects.all()
+	DisplayCourses = [i for i in CourseObjAll if i.Display == True]
+
+	#read tags from file
+	'''TagsFileObj = open('tags.txt', 'r+')
+	TagsArr = TagsFileObj.read().split()'''
+	#make new tags list thru function
+	AllDiffTags = MakeTagsList()
+
+	RecentCourses = []
+	NotSearched = False
+	if (len(DisplayCourses)>5):
+		for n in range(len(DisplayCourses)-5, len(DisplayCourses)):
+			RecentCourses.append(DisplayCourses[n])
+	else :
+		for n in DisplayCourses:
+			RecentCourses.append(n)
+
+	DisplayCourses = sorted(DisplayCourses, key=lambda Course: Course.Position)
+	VarDict = {'CourseObjAll' : DisplayCourses, 'media' : MEDIA_URL, 
+				'Tags': AllDiffTags, 'RecentCourses' : RecentCourses, 'NotSearched' : NotSearched, 'Filtered': True, 'Language': 'English'}
+	return render(request, 'coursesList.html', VarDict)
 
 def SearchCourse(request):
 	#the tag submitted by user
@@ -184,18 +234,18 @@ def SearchCourse(request):
 
 	#make new tags list thru function
 	AllDiffTags = MakeTagsList()
-
+	DisplayCourses = [i for i in RelevantCourses if i.Display == True]
 	#to make list of 5 recent Course
-	if (len(CourseObjAll)>5):
-		for n in range(len(CourseObjAll)-5, len(CourseObjAll)):
-			RecentCourses.append(CourseObjAll[n])
+	if (len(DisplayCourses)>5):
+		for n in range(len(DisplayCourses)-5, len(DisplayCourses)):
+			RecentCourses.append(DisplayCourses[n])
 	else :
-		for n in CourseObjAll:
+		for n in DisplayCourses:
 			RecentCourses.append(n)
 	
-	DisplayCourses = [i for i in RelevantCourses if i.Display == True]
-
-	varDict = {'CourseObjAll' : DisplayCourses, 'media' : MEDIA_URL, 'NotSearched' : NotSearched}
+	DisplayCourses = sorted(DisplayCourses, key=lambda Course: Course.Position)
+	
+	varDict = {'CourseObjAll' : DisplayCourses, 'media' : MEDIA_URL, 'NotSearched' : NotSearched, 'Filtered': False, 'Language': 'null'}
 
 	return render(request, 'coursesList.html', varDict) 
 
@@ -219,7 +269,7 @@ def SearchCourseByName(request):
 				continue
 	DisplayCourses = [i for i in RelevantCourses if i.Display == True]
 	
-	varDict = {'CourseObjAll' : DisplayCourses, 'media' : MEDIA_URL, 'NotSearched' : NotSearched}
+	varDict = {'CourseObjAll' : DisplayCourses, 'media' : MEDIA_URL, 'NotSearched' : NotSearched, 'Filtered': False, 'Language': 'null'}
 
 	return render(request, 'coursesList.html', varDict) 
 
@@ -247,6 +297,7 @@ def Pay2(request, CourseId2):
 	Email = request.POST["Email"]
 	Password = request.POST["Password"]
 	CourseId = request.POST["CourseId"]
+	Prompt = "User Doesnt Exist, please register first!"
 	if(CourseId == CourseId2): 
 		Persons = User.objects.all()
 		for i in Persons:

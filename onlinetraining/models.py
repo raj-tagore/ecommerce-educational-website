@@ -10,7 +10,7 @@ class OnlineTrainingCategory(models.Model):
 		return self.Name 
 
 class OnlineTrainingApplicantType(models.Model):
-	Name = models.CharField(max_length = 100)
+	Name = models.CharField(max_length = 100) 
 	About = models.TextField(default = 'null')
 
 	def __str__(self):

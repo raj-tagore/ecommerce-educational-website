@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 {% load static %}
+{% load custom_template_tags %}
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -164,6 +165,39 @@
             <div class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
+                        {% if Filtered == False %}
+                        <h4>Filter by Language:&emsp;&emsp;&emsp;&emsp;&emsp;
+                        <a href="https://www.rajeshtagore.com/coursesList/Hindi/" class="genric-btn info circle">Hindi</a>&emsp;          
+                        <a href="https://www.rajeshtagore.com/coursesList/English/" class="genric-btn primary circle">English</a></h4><br><br>
+                        {% endif %}
+                        {% if Filtered %} 
+
+                        {% for i in CourseObjAll %}
+                        {% if i.Language == Language %}
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="{{media}}{{i.FrontPic}}" alt="">
+                                <!--a href="SpecificCourse/{{i.name}}/" class="blog_item_date"-->
+                                <a href="pay1/{{i.id}}/" class="blog_item_date">
+                                    <h3>Buy</h3>
+                                </a>
+                            </div>
+
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="pay1/{{i.id}}/">
+                                    <h2>{{i.Name}}</h2>
+                                </a>
+                                <p><b>Price: Rs. {{i.Price}}</b></p>
+                                <p>{{i.About}}</p>
+                                <ul class="blog-info-link">
+                                    <li><a href="#"><i class="fa fa-user"></i>{{i.Language}}</a></li>
+                                </ul>
+                            </div>
+                        </article>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% else %}
                         {% for i in CourseObjAll %}
                         <article class="blog_item">
                             <div class="blog_item_img">
@@ -181,11 +215,12 @@
                                 <p><b>Price: Rs. {{i.Price}}</b></p>
                                 <p>{{i.About}}</p>
                                 <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i>{{i.Tags}}</a></li>
+                                    <li><a href="#"><i class="fa fa-user"></i>{{i.Language}}</a></li>
                                 </ul>
                             </div>
                         </article>
                         {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -361,6 +396,20 @@
 
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/slideshow.js' %}"></script>
+    <!--script>
+        function HindiLanguage() {
+            var Language = 'Hindi';
+            {% setvar 'Hindi' as Language %}
+            {% setvar True as Filtered %} 
+        }
+        function EnglishLanguage() {
+            var Language = 'English';
+            {% setvar 'English' as Language %}
+            {% setvar True as Filtered %} 
+        }
+        document.getElementById("Lang").value = Language;
+
+    </script-->
 
 </body>
 </html>

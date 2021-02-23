@@ -9,3 +9,5 @@ admin.site.register(TrainingProgram, TrainingTable)
 class TrainingApplicantTable(admin.ModelAdmin):
     list_display= ('Name', 'id', 'Phone', 'CourseName', 'Email')
 admin.site.register(TrainingApplicant, TrainingApplicantTable)
+
+
