@@ -9,6 +9,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.template.loader import get_template
 from django.template import Context, Template,RequestContext
 import datetime
+import time
 import hashlib
 from random import randint
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
