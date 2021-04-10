@@ -221,6 +221,7 @@ def Pay3(request):
 	Address = request.POST["Address"]
 	Product = TrainingProgram.objects.get(id = int(CourseId))
 	Namo = Name.split(' ')[0].lower()
+	random.seed(time.clock())
 	hash_object = hashlib.sha256(b'random.randint(0,20)')
 	txnid=hash_object.hexdigest()[0:20]
 	hashh = ''

@@ -135,6 +135,7 @@ def Pay2(request):
 	Address = request.POST["Address1"]+", "+request.POST["Address2"]+", "+request.POST["Address3"]+", "+request.POST["PinCode"]
 	SelectedProduct = Product.objects.get(id = PId)
 	Namo = Name.split(' ')[0].lower()
+	random.seed(time.clock())
 	hash_object = hashlib.sha256(b'random.randint(0,20)')
 	txnid=hash_object.hexdigest()[0:20]
 	hashh = ''

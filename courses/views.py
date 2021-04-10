@@ -341,6 +341,7 @@ def Pay3PayU(request):
     Person = User.objects.get(id=CId)
     Product = Course.objects.get(id=PId)
     Namo = Person.Name.split(' ')[0].lower()
+    random.seed(time.clock())
     hash_object = hashlib.sha256(b'random.randint(0,20)')
     txnid = hash_object.hexdigest()[0:20]
     print(txnid)
