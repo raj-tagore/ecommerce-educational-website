@@ -10,7 +10,7 @@ from django.template.loader import get_template
 from django.template import Context, Template,RequestContext
 import datetime
 import hashlib
-from random import randint
+import random
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 
@@ -33,7 +33,7 @@ def TrainingPg(request):
 			RelevantObj.append(i)
 	RelevantObj = sorted(RelevantObj, key=lambda OnlineTrainingProgram: OnlineTrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
-	return render(request, "OnlineTrainingPrograms.html", VarDict)
+	return render(request, "Training/OnlineTrainingPrograms.html", VarDict)
 
 def InsuranceTrainingPg(request):
 	Programs = OnlineTrainingProgram.objects.all()
@@ -51,7 +51,7 @@ def InsuranceTrainingPg(request):
 			RelevantObj.append(i)
 	RelevantObj = sorted(RelevantObj, key=lambda OnlineTrainingProgram: OnlineTrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
-	return render(request, "OnlineTrainingPrograms.html", VarDict)
+	return render(request, "Training/OnlineTrainingPrograms.html", VarDict)
 
 def SalesTrainingPg(request):
 	Programs = OnlineTrainingProgram.objects.all()
@@ -69,7 +69,7 @@ def SalesTrainingPg(request):
 			RelevantObj.append(i)
 	RelevantObj = sorted(RelevantObj, key=lambda OnlineTrainingProgram: OnlineTrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
-	return render(request, "OnlineTrainingPrograms.html", VarDict)
+	return render(request, "Training/OnlineTrainingPrograms.html", VarDict)
 
 def NetworkMarketingTrainingPg(request):
 	Programs = OnlineTrainingProgram.objects.all()
@@ -87,7 +87,7 @@ def NetworkMarketingTrainingPg(request):
 			RelevantObj.append(i)
 	RelevantObj = sorted(RelevantObj, key=lambda OnlineTrainingProgram: OnlineTrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}	
-	return render(request, "OnlineTrainingPrograms.html", VarDict)
+	return render(request, "Training/OnlineTrainingPrograms.html", VarDict)
 
 def BusinessTrainingPg(request):
 	Programs = OnlineTrainingProgram.objects.all()
@@ -105,7 +105,7 @@ def BusinessTrainingPg(request):
 			RelevantObj.append(i)
 	RelevantObj = sorted(RelevantObj, key=lambda OnlineTrainingProgram: OnlineTrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
-	return render(request, "OnlineTrainingPrograms.html", VarDict)
+	return render(request, "Training/OnlineTrainingPrograms.html", VarDict)
 
 def SelfDevelopmentTrainingPg(request):
 	Programs = OnlineTrainingProgram.objects.all()
@@ -123,7 +123,7 @@ def SelfDevelopmentTrainingPg(request):
 			RelevantObj.append(i)
 	RelevantObj = sorted(RelevantObj, key=lambda OnlineTrainingProgram: OnlineTrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
-	return render(request, "OnlineTrainingPrograms.html", VarDict)
+	return render(request, "Training/OnlineTrainingPrograms.html", VarDict)
 
 def HostTrainingPg(request):
 	return render(request, "HostTrainingPrograms.html")
@@ -132,11 +132,11 @@ def HostTrainingPg(request):
 #display the form to apply for a training program
 def ApplyForTraining(request, CourseName):
 	Course = OnlineTrainingProgram.objects.get(Name = CourseName)
-	return render(request, "ApplyForTrainingForm.html", {'Course' : Course, 'Media' : MEDIA_URL})
+	return render(request, "Training/ApplyForTrainingForm.html", {'Course' : Course, 'Media' : MEDIA_URL})
 
 def MoreAboutTraining(request, CourseName):
 	Course = OnlineTrainingProgram.objects.get(Name = CourseName)
-	return render(request, "OnlineMoreAboutTraining.html", {'SelectedTraining' : Course, 'Media' : MEDIA_URL})
+	return render(request, "Training/OnlineMoreAboutTraining.html", {'SelectedTraining' : Course, 'Media' : MEDIA_URL})
 
 def Pay2(request):
 	Name = request.POST["Name"] 
@@ -157,7 +157,7 @@ def Pay2(request):
 		else:
 			continue
 	if(exists):
-		return render(request, 'ApplyForTrainingForm.html', {'s': s, 'Course' : TrainingObj, 'Media' : MEDIA_URL})
+		return render(request, 'Training/ApplyForTrainingForm.html', {'s': s, 'Course' : TrainingObj, 'Media' : MEDIA_URL})
 	else:
 		VarDict = {'Product' : TrainingObj, 'Media' : MEDIA_URL, 
 					'Name': Name,
@@ -165,7 +165,7 @@ def Pay2(request):
 					'Phone': Phone,
 					'CourseId': TrainingObj.id,
 					'Address': Address}
-		return render(request, 'Tbuy.html', VarDict)
+		return render(request, 'Training/Tbuy.html', VarDict)
 
 def Pay3(request):
 	Name = request.POST["Name"]
@@ -175,7 +175,7 @@ def Pay3(request):
 	Address = request.POST["Address"]
 	Product = OnlineTrainingProgram.objects.get(id = int(CourseId))
 	Namo = Name.split(' ')[0].lower()
-	hash_object = hashlib.sha256(b'randint(0,20)')
+	hash_object = hashlib.sha256(b'random.randint(0,20)')
 	txnid=hash_object.hexdigest()[0:20]
 	hashh = ''
 	price = round(float(Product.Price), 2)
@@ -198,7 +198,7 @@ def Pay3(request):
 		"hashh":hashh,
 		"hash_string":hash_string,
 	}
-	return render(request, 'OPayUForm.html', VarDict)
+	return render(request, 'Training/OPayUForm.html', VarDict)
 
 @csrf_protect
 @csrf_exempt
@@ -247,7 +247,7 @@ def OTPaymentSuccess(request):
 		if(exists):
 			s=True
 			vardict = {"txnid":txnid,"status":status,"amount":amount, "s":s, 'Product':Product, 'user':user,'Media' : MEDIA_URL}
-			return render(request, 'TSuccessPg.html', vardict)
+			return render(request, 'Training/TSuccessPg.html', vardict)
 		else:
 			s=True
 			NewApplicant = OnlineTrainingApplicant()
@@ -259,7 +259,7 @@ def OTPaymentSuccess(request):
 			NewApplicant.Address = Address
 			NewApplicant.save()
 			vardict = {"txnid":txnid,"status":status,"amount":amount, "s":s, 'Product':Product, 'user':NewApplicant,'Media' : MEDIA_URL}
-			return render(request, 'TSuccessPg.html', vardict)
+			return render(request, 'Training/TSuccessPg.html', vardict)
 
 @csrf_protect
 @csrf_exempt
@@ -270,8 +270,7 @@ def OTPaymentFailure(request):
 def VerifyParticipantForm(request, CourseName):
 	Course = OnlineTrainingProgram.objects.get(Name = CourseName)
 	VarDict = {'Course': Course}
-	return render(request, 'OTVerifyYourself.html', VarDict)
-
+	return render(request, 'Training/OTVerifyYourself.html', VarDict)
 	
 
 def ActuallyJoinTraining(request):
@@ -296,4 +295,4 @@ def ActuallyJoinTraining(request):
 		else:
 			continue
 	VarDict = {'Verified' : Verified, 'MeetingLink' : MeetingLink, 'Course' : Course}
-	return render(request, "OTParticipantConfirmed.html", VarDict)
+	return render(request, "Training/OTParticipantConfirmed.html", VarDict)

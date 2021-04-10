@@ -33,7 +33,7 @@ def TrainingPg(request):
 			RelevantObj.append(i)
 	RelevantObj = sorted(RelevantObj, key=lambda TrainingProgram: TrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
-	return render(request, "TrainingPrograms.html", VarDict)
+	return render(request, "Training/TrainingPrograms.html", VarDict)
 
 def InsuranceTrainingPg(request):
 	Programs = TrainingProgram.objects.all()
@@ -51,7 +51,7 @@ def InsuranceTrainingPg(request):
 			RelevantObj.append(i)
 	RelevantObj = sorted(RelevantObj, key=lambda TrainingProgram: TrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
-	return render(request, "TrainingPrograms.html", VarDict)
+	return render(request, "Training/TrainingPrograms.html", VarDict)
 
 def SalesTrainingPg(request):
 	Programs = TrainingProgram.objects.all()
@@ -69,7 +69,7 @@ def SalesTrainingPg(request):
 			RelevantObj.append(i)
 	RelevantObj = sorted(RelevantObj, key=lambda TrainingProgram: TrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
-	return render(request, "TrainingPrograms.html", VarDict)
+	return render(request, "Training/TrainingPrograms.html", VarDict)
 
 def NetworkMarketingTrainingPg(request):
 	Programs = TrainingProgram.objects.all()
@@ -87,7 +87,7 @@ def NetworkMarketingTrainingPg(request):
 			RelevantObj.append(i)
 	RelevantObj = sorted(RelevantObj, key=lambda TrainingProgram: TrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}	
-	return render(request, "TrainingPrograms.html", VarDict)
+	return render(request, "Training/TrainingPrograms.html", VarDict)
 
 def BusinessTrainingPg(request):
 	Programs = TrainingProgram.objects.all()
@@ -105,7 +105,7 @@ def BusinessTrainingPg(request):
 			RelevantObj.append(i)
 	RelevantObj = sorted(RelevantObj, key=lambda TrainingProgram: TrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
-	return render(request, "TrainingPrograms.html", VarDict)
+	return render(request, "Training/TrainingPrograms.html", VarDict)
 
 def SelfDevelopmentTrainingPg(request):
 	Programs = TrainingProgram.objects.all()
@@ -123,19 +123,19 @@ def SelfDevelopmentTrainingPg(request):
 			RelevantObj.append(i)
 	RelevantObj = sorted(RelevantObj, key=lambda TrainingProgram: TrainingProgram.Position)
 	VarDict = {'programs' : RelevantObj, 'Media' : MEDIA_URL, 'SelectedCategory': SelectedCategory}
-	return render(request, "TrainingPrograms.html", VarDict)
+	return render(request, "Training/TrainingPrograms.html", VarDict)
 
 def HostTrainingPg(request):
-	return render(request, "HostTrainingPrograms.html")
+	return render(request, "Training/HostTrainingPrograms.html")
 
 #display the form to apply for a training program
 def ApplyForTraining(request, CourseName):
 	Course = TrainingProgram.objects.get(Name = CourseName)
-	return render(request, "ApplyForTrainingForm.html", {'Course' : Course, 'Media' : MEDIA_URL})
+	return render(request, "Training/ApplyForTrainingForm.html", {'Course' : Course, 'Media' : MEDIA_URL})
 
 def MoreAboutTraining(request, CourseName):
 	Course = TrainingProgram.objects.get(Name = CourseName)
-	return render(request, "MoreAboutTraining.html", {'SelectedTraining' : Course, 'Media' : MEDIA_URL})
+	return render(request, "Training/MoreAboutTraining.html", {'SelectedTraining' : Course, 'Media' : MEDIA_URL})
 
 '''def SaveDataOfApplicant(request):
 	Name = request.POST["name"]
@@ -203,7 +203,7 @@ def Pay2(request):
 		else:
 			continue
 	if(exists):
-		return render(request, 'ApplyForTrainingForm.html', {'Prompt': s, 'Course' : TrainingObj, 'Media' : MEDIA_URL})
+		return render(request, 'Training/ApplyForTrainingForm.html', {'Prompt': s, 'Course' : TrainingObj, 'Media' : MEDIA_URL})
 	else:
 		VarDict = {'Product' : TrainingObj, 'Media' : MEDIA_URL, 
 					'Name': Name,
@@ -211,7 +211,7 @@ def Pay2(request):
 					'Phone': Phone,
 					'CourseId': TrainingObj.id,
 					'Address': Address}
-		return render(request, 'Tbuy.html', VarDict)
+		return render(request, 'Training/Tbuy.html', VarDict)
 
 def Pay3(request):
 	Name = request.POST["Name"]
@@ -221,7 +221,7 @@ def Pay3(request):
 	Address = request.POST["Address"]
 	Product = TrainingProgram.objects.get(id = int(CourseId))
 	Namo = Name.split(' ')[0].lower()
-	hash_object = hashlib.sha256(b'randint(0,20)')
+	hash_object = hashlib.sha256(b'random.randint(0,20)')
 	txnid=hash_object.hexdigest()[0:20]
 	hashh = ''
 	price = round(float(Product.Price), 2)
@@ -244,7 +244,7 @@ def Pay3(request):
 		"hashh":hashh,
 		"hash_string":hash_string,
 	}
-	return render(request, 'TPayUForm.html', VarDict)
+	return render(request, 'Training/TPayUForm.html', VarDict)
 
 @csrf_protect
 @csrf_exempt
@@ -272,7 +272,7 @@ def TPaymentSuccess(request):
 	if(hashh !=posted_hash):
 		s=False
 		vardict = {"txnid":txnid,"status":status,"amount":amount,"s":s, 'Product':Product, 'user':NewApplicant,'Media' : MEDIA_URL}
-		return render(request, 'SuccessPg.html', vardict)
+		return render(request, 'Training/SuccessPg.html', vardict)
 
 	else:
 		'''print "Thank You. Your order status is ", status
@@ -325,4 +325,4 @@ def TPaymentFailure(request):
 	Product = TrainingProgram.objects.get(id = int(productinfo))
 	s=False
 	vardict = {"txnid":txnid,"status":status,"amount":amount,"s":s, 'Product':Product,'Media' : MEDIA_URL}
-	return render(request, 'SuccessPg.html', vardict)
+	return render(request, 'Training/SuccessPg.html', vardict)

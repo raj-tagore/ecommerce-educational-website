@@ -22,6 +22,7 @@ urlpatterns = [
 	path(r'pay1/<CourseId2>/pay2/', views.Pay2),
 	path(r'Hindi/pay1/<CourseId2>/pay2/', views.Pay2),
 	path(r'English/pay1/<CourseId2>/pay2/', views.Pay2),
+	re_path(r'pay2/pay2/$', views.ErrorPg),
 	re_path(r'pay3payU/', views.Pay3PayU), 
 	re_path('PaymentSuccess/', views.PaymentSuccess),
 	re_path('PaymentFailure/', views.PaymentFailure)

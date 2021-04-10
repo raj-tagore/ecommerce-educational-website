@@ -12,7 +12,7 @@ from django.template.loader import get_template
 from django.template import Context, Template,RequestContext
 import datetime
 import hashlib
-from random import randint
+import random
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 import datetime
 import smtplib
@@ -116,16 +116,16 @@ def ProductsPg(request):
 		if i.Display == True:
 			RelevantProducts.append(i)
 	RelevantProducts = sorted(RelevantProducts, key=lambda Product: Product.Position)
-	return render(request, 'products.html', {'Product' : RelevantProducts, 'Media' : MEDIA_URL})
+	return render(request, 'Products/products.html', {'Product' : RelevantProducts, 'Media' : MEDIA_URL})
 
 def ViewProduct(request, ProductId):
 	SelectedProduct = Product.objects.get(id = int(ProductId))
-	return render(request, 'PBuy.html', {'Product': SelectedProduct, 'Media' : MEDIA_URL})
+	return render(request, 'Products/PBuy.html', {'Product': SelectedProduct, 'Media' : MEDIA_URL})
 
 def Pay1(request):
 	ProductId = request.POST["PId"]
 	SelectedProduct = Product.objects.get(id = int(ProductId))
-	return render(request, 'PForm.html', {'Product': SelectedProduct, 'Media': MEDIA_URL})
+	return render(request, 'Products/PForm.html', {'Product': SelectedProduct, 'Media': MEDIA_URL})
 
 def Pay2(request):
 	Name = request.POST["Name"]
@@ -135,7 +135,7 @@ def Pay2(request):
 	Address = request.POST["Address1"]+", "+request.POST["Address2"]+", "+request.POST["Address3"]+", "+request.POST["PinCode"]
 	SelectedProduct = Product.objects.get(id = PId)
 	Namo = Name.split(' ')[0].lower()
-	hash_object = hashlib.sha256(b'randint(0,20)')
+	hash_object = hashlib.sha256(b'random.randint(0,20)')
 	txnid=hash_object.hexdigest()[0:20]
 	hashh = ''
 	Price = round(float(SelectedProduct.Price), 2)
@@ -160,7 +160,7 @@ def Pay2(request):
 		"hashh":hashh,
 		"hash_string":hash_string,
 	}
-	return render(request, 'PPayUForm.html', VarDict)
+	return render(request, 'Products/PPayUForm.html', VarDict)
 	'''VarDict = {'Product' : Product, 'Media' : MEDIA_URL, 
 				'Name': Name,
 				'Email': Email,
@@ -194,7 +194,7 @@ def PaymentSuccess(request):
 	if(hashh !=posted_hash):
 		s=False
 		vardict = {"txnid":txnid,"status":status,"amount":amount,"s":s, 'Product':SelectedProduct,'user':Buyer,'Media' : MEDIA_URL}
-		return render(request, 'PSuccessPg.html', vardict)
+		return render(request, 'Products/PSuccessPg.html', vardict)
 
 	else:
 		'''print "Thank You. Your order status is ", status
@@ -212,7 +212,7 @@ def PaymentSuccess(request):
 		#PrepMail(NewBuyer.id, NewBuyer.ProductId)
 		#user.Courses.add(Product)
 		vardict = {"txnid":txnid,"status":status,"amount":amount, "s":s, 'Product':SelectedProduct, 'user':NewBuyer,'Media' : MEDIA_URL}
-	return render(request, 'PSuccessPg.html', vardict)
+	return render(request, 'Products/PSuccessPg.html', vardict)
 
 @csrf_protect
 @csrf_exempt
@@ -222,6 +222,6 @@ def PaymentFailure(request):
 def SearchProducts(request):
 	namo = request.GET.get('keyword')
 	FilteredProductsObj = Product.objects.filter(Name = namo)
-	return render(request, 'products.html', {'Product' : FilteredProductsObj, 'Media' : MEDIA_URL})
+	return render(request, 'Products/products.html', {'Product' : FilteredProductsObj, 'Media' : MEDIA_URL})
 
 
