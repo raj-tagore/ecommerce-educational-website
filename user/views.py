@@ -100,5 +100,5 @@ def ProductsView(request):
 	UserObj = User.objects.get(id = int(UId))
 	Courses = UserObj.Courses.all()
 	print(Courses)
-	return render(request, 'userproducts.html', {'User' : UserObj, 'Courses' : Courses, 'Media' : MEDIA_URL})
+	return render(request, 'Courses/userproducts.html', {'User' : UserObj, 'Courses' : Courses, 'Media' : MEDIA_URL})
 
