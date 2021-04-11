@@ -136,9 +136,11 @@ def Pay2(request):
 	Address = request.POST["Address1"]+", "+request.POST["Address2"]+", "+request.POST["Address3"]+", "+request.POST["PinCode"]
 	SelectedProduct = Product.objects.get(id = PId)
 	Namo = Name.split(' ')[0].lower()
-	random.seed(time.clock())
-	hash_object = hashlib.sha256(b'random.randint(0,20)')
+	
+	randomize = randint(0,20)
+	hash_object = hashlib.sha256(bytes(randomize+int(time.time())))
 	txnid=hash_object.hexdigest()[0:20]
+
 	hashh = ''
 	Price = round(float(SelectedProduct.Price), 2)
 	if (SelectedProduct.ActivateDiscount==True):

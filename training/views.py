@@ -222,9 +222,11 @@ def Pay3(request):
 	Address = request.POST["Address"]
 	Product = TrainingProgram.objects.get(id = int(CourseId))
 	Namo = Name.split(' ')[0].lower()
-	random.seed(time.clock())
-	hash_object = hashlib.sha256(b'random.randint(0,20)')
+
+	randomize = randint(0,20)
+	hash_object = hashlib.sha256(bytes(randomize+int(time.time())))
 	txnid=hash_object.hexdigest()[0:20]
+
 	hashh = ''
 	price = round(float(Product.Price), 2)
 	hashSequence = "FEG7f40y|"+str(txnid)+"|"+str(price)+"|"+str(CourseId)+"|"+Namo+"|"+Email+"||"+Name+"|"+str(Phone)+"||"+Address+"|||||"
