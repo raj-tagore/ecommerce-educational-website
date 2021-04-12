@@ -293,7 +293,7 @@ def ActuallyJoinTraining(request):
 				Verified = True
 				MeetingLink = Course.MeetingLink
 				VarDict = {'Verified' : Verified, 'MeetingLink' : MeetingLink, 'Course' : Course}
-				return render(request, "OTParticipantConfirmed.html", VarDict)
+				return render(request, "Training/OTParticipantConfirmed.html", VarDict)
 			else:
 				continue
 		else:

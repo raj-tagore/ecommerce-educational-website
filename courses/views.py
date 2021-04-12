@@ -13,11 +13,9 @@ import datetime
 import hashlib
 import random
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
-import datetime
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import os
 import time
 
 # Create your views here.
