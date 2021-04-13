@@ -12,6 +12,7 @@ from django.template import Context, Template, RequestContext
 import datetime
 import hashlib
 import random
+from random import randint
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 import smtplib
 from email.mime.text import MIMEText

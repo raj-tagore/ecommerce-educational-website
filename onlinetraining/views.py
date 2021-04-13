@@ -12,6 +12,7 @@ import datetime
 import time
 import hashlib
 import random
+from random import randint
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 
