@@ -15,6 +15,7 @@ class Product(models.Model):
 	Display = models.BooleanField(default = True)
 	Position = models.IntegerField(default=1)
 	DaysForDelivery = models.IntegerField(default=8)
+	ShowDealer = models.BooleanField(default = False)
  
 	def __str__(self):
 		return self.Name
@@ -26,6 +27,7 @@ class Buyer(models.Model):
 	Email = models.EmailField(default = 'null')
 	ProductId = models.IntegerField(default = 0)
 	ProductName = models.CharField(max_length = 100)
+	Dealer = models.CharField(max_length = 200, default='null')
 
 	def __str__(self):
 		return self.Name

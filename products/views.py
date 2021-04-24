@@ -135,6 +135,7 @@ def Pay2(request):
 	Phone = request.POST["Phone"] 
 	PId = request.POST["PId"]
 	Address = request.POST["Address1"]+", "+request.POST["Address2"]+", "+request.POST["Address3"]+", "+request.POST["PinCode"]
+	Dealer = request.POST["Dealer"]
 	SelectedProduct = Product.objects.get(id = PId)
 	Namo = Name.split(' ')[0].lower()
 	
@@ -146,7 +147,7 @@ def Pay2(request):
 	Price = round(float(SelectedProduct.Price), 2)
 	if (SelectedProduct.ActivateDiscount==True):
 		Price = round(float(SelectedProduct.DiscountedPrice), 2)
-	hashSequence = "FEG7f40y|"+str(txnid)+"|"+str(Price)+"|"+str(PId)+"|"+Namo+"|"+Email+"||"+Name+'|'+str(Phone)+'|'+Email+"|"+Address+"|||||"
+	hashSequence = "FEG7f40y|"+str(txnid)+"|"+str(Price)+"|"+str(PId)+"|"+Namo+"|"+Email+"||"+Name+'|'+str(Phone)+'|'+Email+"|"+Address+"|"+Dealer+"||||"
 	hash_string=hashSequence
 	hash_string+='|'
 	hash_string+=SALT
@@ -162,6 +163,7 @@ def Pay2(request):
 		'Address' : Address,
 		'Phone' : Phone, 
 		'Email' : Email,
+		'Dealer' : Dealer
 		"hashh":hashh,
 		"hash_string":hash_string,
 	}
@@ -188,13 +190,14 @@ def PaymentSuccess(request):
 	Phone=request.POST['udf3']
 	Email=request.POST['udf4']
 	Address=request.POST['udf5']
+	Dealer=request.POST['udf6']
 	salt=SALT
 	SelectedProduct = Product.objects.get(id = int(productinfo))
 	try:
 		additionalCharges=request.POST["additionalCharges"]
-		retHashSeq=additionalCharges+'|'+salt+'|'+status+'||||||'+Address+'|'+Email+'|'+str(Phone)+'|'+Name+'||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
+		retHashSeq=additionalCharges+'|'+salt+'|'+status+'|||||'+Dealer+'|'+Address+'|'+Email+'|'+str(Phone)+'|'+Name+'||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
 	except Exception:
-		retHashSeq = salt+'|'+status+'||||||'+Address+'|'+Email+'|'+str(Phone)+'|'+Name+'||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
+		retHashSeq = salt+'|'+status+'|||||'+Dealer+'|'+Address+'|'+Email+'|'+str(Phone)+'|'+Name+'||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
 	hashh=hashlib.sha512(retHashSeq.encode('utf-8')).hexdigest().lower()
 	if(hashh !=posted_hash):
 		s=False
@@ -213,6 +216,7 @@ def PaymentSuccess(request):
 		NewBuyer.Address = Address
 		NewBuyer.ProductId = SelectedProduct.id
 		NewBuyer.ProductName = SelectedProduct.Name
+		NewBuyer.Dealer = Dealer
 		NewBuyer.save()
 		#PrepMail(NewBuyer.id, NewBuyer.ProductId)
 		#user.Courses.add(Product)

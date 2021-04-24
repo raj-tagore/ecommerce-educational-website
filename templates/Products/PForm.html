@@ -56,6 +56,12 @@
                             <label for="pincode">Pincode :</label>
                             <input type="text" name="PinCode" id="PinCode" required/>
                         </div>
+                        {% if Product.ShowDealer %}
+                        <div class="form-group">
+                            <label for="Dealer">Dealers Name:</label>
+                            <input type="text" name="Dealer" id="Dealer" value="null"/>
+                        </div>
+                        {% endif %}
                         <!--div class="form-radio">
                             <label for="gender" class="radio-label">Gender :</label>
                             <div class="form-radio-item">
