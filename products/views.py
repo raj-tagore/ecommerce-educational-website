@@ -163,7 +163,7 @@ def Pay2(request):
 		'Address' : Address,
 		'Phone' : Phone, 
 		'Email' : Email,
-		'Dealer' : Dealer
+		'Dealer' : Dealer,
 		"hashh":hashh,
 		"hash_string":hash_string,
 	}
