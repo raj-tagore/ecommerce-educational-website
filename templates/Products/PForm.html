@@ -59,8 +59,10 @@
                         {% if Product.ShowDealer %}
                         <div class="form-group">
                             <label for="Dealer">Dealers Name:</label>
-                            <input type="text" name="Dealer" id="Dealer" value="null"/>
+                            <input type="text" name="Dealer" id="Dealer"/>
                         </div>
+                        {% else %}
+                            <input type="hidden" name="Dealer" id="Dealer" value = "null" required/>
                         {% endif %}
                         <!--div class="form-radio">
                             <label for="gender" class="radio-label">Gender :</label>
