@@ -25,9 +25,6 @@
     <link rel="stylesheet" href="{% static 'css/slick.css'%}">
     <link rel="stylesheet" href="{% static 'css/slicknav.css'%}">
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-
-      <!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"-->        <!-- Google web font "Open Sans" -->
       <link rel="stylesheet" href="{% static 'css2/bootstrap.min.css'%}">                                            <!-- https://getbootstrap.com/ -->
       <link rel="stylesheet" href="{% static 'css2/fontawesome-all.min.css'%}">                                      <!-- Font awesome -->
       <link rel="stylesheet" href="{% static 'css2/tooplate-style.css'%}">                                           <!-- Templatemo style -->
@@ -165,17 +162,6 @@
     <!-- header-end -->
 
     <!-- bradcam_area  -->
-    <!--div class="bradcam_area breadcam_bg_2">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="bradcam_text text-center">
-                        <h3>Products</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div-->
 
     <div class="portfolio_details_area" style="padding-top: 200px; padding-bottom: 0px">
         <div class="container">
@@ -196,16 +182,6 @@
     <div class="row mb-5">
       <div class="col-xl-12">
         <div class="media-boxes">
-
-            <!--div class="tm-search-form-container">
-              <form action="SearchProducts/" method="GET" class="form-inline tm-search-form">
-                <div class="form-group tm-search-box">
-                  <input type="text" name="keyword" class="form-control tm-search-input" placeholder="Type your keyword ...">
-                  <input type="submit" value="Search" class="form-control tm-search-submit">
-                </div>
-              </form>
-            </div>
-            <br><br><br><br-->
             {% for i in Product %}
         <div class="media">
             <a href="ViewProduct/{{i.id}}/"><img src="{{Media}}{{i.FrontPic}}" alt="Image" class="mr-3" height="150"></a>
@@ -232,7 +208,6 @@
     </div>
 
 
-    <!-- footer start -->
     <!-- footer start -->
     <footer class="footer">
         <div class="footer_top">
@@ -269,21 +244,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                    Browse
-                            </h3>
-                            <ul>
-                                <li><a href="training/">Training Sessions</a></li>
-                                <li><a href="products/">Products</a></li>
-                                <li><a href="coursesList/">Online Courses</a></li>
-                                <li><a href="#">Live Courses</a></li>
-                                <li><a href="about/">About Rajesh Tagore</a></li>
-                            </ul>
-
-                        </div>
-                    </div-->
                     <div class="col-xl-2 col-md-6 col-lg-2">
                         <div class="footer_widget">
                             <h3 class="footer_title">
