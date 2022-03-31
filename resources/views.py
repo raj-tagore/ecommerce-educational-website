@@ -1,11 +1,11 @@
 from django.shortcuts import render
 import os
 from .models import JPGResource, PDFResource, PPTResource, OtherResource, AUDResource, VIDResource
-# Create your views here.
+from ..RTwebsite import settings
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
-MEDIA_URL= "https://rtwebsitebucket.s3.us-east-1.amazonaws.com/"
+BASE_DIR = settings.BASE_DIR
+MEDIA_ROOT = settings.MEDIA_ROOT
+MEDIA_URL = settings.MEDIA_URL
 
 def ResourcesMenuPg(request):
 	return render(request, 'resourcesmenu.html', {'Media' : MEDIA_URL})

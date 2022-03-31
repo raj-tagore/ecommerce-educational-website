@@ -13,15 +13,15 @@ import time
 import hashlib
 from random import randint
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from ..RTwebsite import settings
 
+BASE_DIR = settings.BASE_DIR
+MEDIA_ROOT = settings.MEDIA_ROOT
+MEDIA_URL = settings.MEDIA_URL
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
-MEDIA_URL= "https://rtwebsitebucket.s3.us-east-1.amazonaws.com/"
-
-PAYU_MERCHANT_KEY = "FEG7f40y" 
-PAYU_MERCHANT_SALT = SALT = "lHX69YxP0p"
-PAYU_MODE = "TEST"
+PAYU_MERCHANT_KEY = settings.PAYU_MERCHANT_KEY
+PAYU_MERCHANT_SALT = SALT = settings.PAYU_MERCHANT_SALT
+PAYU_MODE = settings.PAYU_MODE
 
  
 # Create your views here.

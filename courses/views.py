@@ -18,15 +18,16 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import time
+from ..RTwebsite import settings
 
 # Create your views here.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-MEDIA_URL = "https://rtwebsitebucket.s3.us-east-1.amazonaws.com/"
+BASE_DIR = settings.BASE_DIR
+MEDIA_ROOT = settings.MEDIA_ROOT
+MEDIA_URL = settings.MEDIA_URL
 
-PAYU_MERCHANT_KEY = "FEG7f40y"
-PAYU_MERCHANT_SALT = SALT = "lHX69YxP0p"
-PAYU_MODE = "TEST"
+PAYU_MERCHANT_KEY = settings.PAYU_MERCHANT_KEY
+PAYU_MERCHANT_SALT = SALT = settings.PAYU_MERCHANT_SALT
+PAYU_MODE = settings.PAYU_MODE
 
 
 def SendMail(Subject, TextContent, HtmlContent, Recipient):

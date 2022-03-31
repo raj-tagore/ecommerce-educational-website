@@ -1,2 +1,9 @@
 .env
 static
+media
+payu
+staticfiles
+.idea
+.vscode
+db.sqlite3
+tags.txt

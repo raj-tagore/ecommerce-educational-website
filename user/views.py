@@ -5,12 +5,12 @@ from django.shortcuts import HttpResponse
 from .models import ThreeFeaturedPic
 import os
 from random import randint
+from ..RTwebsite import settings
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
-MEDIA_URL= "https://rtwebsitebucket.s3.us-east-1.amazonaws.com/"
+BASE_DIR = settings.BASE_DIR
+MEDIA_ROOT = settings.MEDIA_ROOT
+MEDIA_URL = settings.MEDIA_URL
 
-# Create your views here.
 def HomeView(request):
 	ShowFeatured = True
 	FeaturedObj = ThreeFeaturedPic.objects.all()
