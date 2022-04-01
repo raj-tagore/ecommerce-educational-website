@@ -6,7 +6,7 @@ The project is built using:
 - django
 - html/css
 - postgreSQL
-- heroku
+- herokus
 - JavaScript
 
 ## Using this project
@@ -22,7 +22,7 @@ The project is built using:
    3. **urls.py** has the routing from urls to views
    4. **views.py** has the views, i.e. the different pages that you view
 3. ### Courses Section
-   1. This section is for the sale of online courses. the videos were uploaded on [vimeo](vimeo.com) and embedded here via the database.
+   1. This section is for the sale of online courses. the videos were uploaded on [vimeo](https://vimeo.com) and embedded here via the database.
    2. The shop, user verification, buying, the payment gateway, addition of data to database on payment verification, and linking of course to user, are all done in the **views.py** file
    3. Database **models.py** has all the courses, and the tutorial-videos associated with them
 4. ### Onlinetraining/Training
